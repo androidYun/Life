@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gy.life.mapper.ReserveGoodModelMapper">
+  <resultMap id="BaseResultMap" type="com.gy.life.model.ReserveGoodModel">
+    <id column="reserve_id" jdbcType="INTEGER" property="reserveId" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="good_name" jdbcType="VARCHAR" property="goodName" />
+    <result column="good_desc" jdbcType="VARCHAR" property="goodDesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="max_count" jdbcType="INTEGER" property="maxCount" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="reserve_finish_time" jdbcType="TIMESTAMP" property="reserveFinishTime" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="pick_address" jdbcType="VARCHAR" property="pickAddress" />
+    <result column="delivery_type" jdbcType="INTEGER" property="deliveryType" />
+    <result column="attention" jdbcType="VARCHAR" property="attention" />
+    <result column="delivery_money" jdbcType="DECIMAL" property="deliveryMoney" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reserve_good
+    where reserve_id = #{reserveId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gy.life.model.ReserveGoodModel">
+    insert into reserve_good (reserve_id, image_url, good_name, 
+      good_desc, create_time, max_count, 
+      unit, reserve_finish_time, delivery_time, 
+      pick_address, delivery_type, attention, 
+      delivery_money)
+    values (#{reserveId,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, #{goodName,jdbcType=VARCHAR}, 
+      #{goodDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{maxCount,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR}, #{reserveFinishTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP}, 
+      #{pickAddress,jdbcType=VARCHAR}, #{deliveryType,jdbcType=INTEGER}, #{attention,jdbcType=VARCHAR}, 
+      #{deliveryMoney,jdbcType=DECIMAL})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ReserveGoodModel">
+    update reserve_good
+    set image_url = #{imageUrl,jdbcType=VARCHAR},
+      good_name = #{goodName,jdbcType=VARCHAR},
+      good_desc = #{goodDesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      max_count = #{maxCount,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      reserve_finish_time = #{reserveFinishTime,jdbcType=TIMESTAMP},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      pick_address = #{pickAddress,jdbcType=VARCHAR},
+      delivery_type = #{deliveryType,jdbcType=INTEGER},
+      attention = #{attention,jdbcType=VARCHAR},
+      delivery_money = #{deliveryMoney,jdbcType=DECIMAL}
+    where reserve_id = #{reserveId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select reserve_id, image_url, good_name, good_desc, create_time, max_count, unit, 
+    reserve_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money
+    from reserve_good
+    where reserve_id = #{reserveId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select reserve_id, image_url, good_name, good_desc, create_time, max_count, unit, 
+    reserve_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money
+    from reserve_good
+  </select>
+</mapper>
