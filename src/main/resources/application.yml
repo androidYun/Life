@@ -1,6 +1,10 @@
 spring:
   datasource:
-      url: jdbc:mysql://106.13.40.231:3306/Lift?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-      username: root
-      password: j8787667n
-      driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://106.13.40.231:3306/Lift?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: j8787667n
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  type-aliases-package: com.gy.life.model
+  mybatis-config-location: classpath*:mybatis/mybatis-config:xml
+  mapper-locations: classpath:mapper/*.xml
