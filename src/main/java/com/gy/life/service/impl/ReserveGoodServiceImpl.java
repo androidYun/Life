@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Component
 public class ReserveGoodServiceImpl implements ReserveService {
 
@@ -16,5 +18,20 @@ public class ReserveGoodServiceImpl implements ReserveService {
     @Override
     public int insertServeGood(ReserveGoodModel reserveGoodModel) {
         return reserveGoodModelMapper.insert(reserveGoodModel);
+    }
+
+    @Override
+    public List<ReserveGoodModel> selectList() {
+        return reserveGoodModelMapper.selectAll();
+    }
+
+    @Override
+    public int deleteReserve(int reserveId) {
+        return reserveGoodModelMapper.deleteByPrimaryKey(reserveId);
+    }
+
+    @Override
+    public int updateReserve(ReserveGoodModel reserveGoodModel) {
+        return reserveGoodModelMapper.updateByPrimaryKey(reserveGoodModel);
     }
 }
