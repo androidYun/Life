@@ -132,4 +132,24 @@ public class ReserveGoodModel {
     public void setDeliveryMoney(Long deliveryMoney) {
         this.deliveryMoney = deliveryMoney;
     }
+
+
+    @Override
+    public String toString() {
+        return "ReserveGoodModel{" +
+                "reserveId=" + reserveId +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", goodName='" + goodName + '\'' +
+                ", goodDesc='" + goodDesc + '\'' +
+                ", createTime=" + createTime +
+                ", maxCount=" + maxCount +
+                ", unit='" + unit + '\'' +
+                ", reserveFinishTime=" + reserveFinishTime +
+                ", deliveryTime=" + deliveryTime +
+                ", pickAddress='" + pickAddress + '\'' +
+                ", deliveryType=" + deliveryType +
+                ", attention='" + attention + '\'' +
+                ", deliveryMoney=" + deliveryMoney +
+                '}';
+    }
 }
