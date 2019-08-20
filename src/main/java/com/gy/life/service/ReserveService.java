@@ -13,4 +13,6 @@ public interface ReserveService {
     int deleteReserve(int reserveId);
 
     int updateReserve(ReserveGoodModel reserveGoodModel);
+
+    ReserveGoodModel selectByReserveId(int reserveId);
 }

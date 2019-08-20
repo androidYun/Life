@@ -34,4 +34,9 @@ public class ReserveGoodServiceImpl implements ReserveService {
     public int updateReserve(ReserveGoodModel reserveGoodModel) {
         return reserveGoodModelMapper.updateByPrimaryKey(reserveGoodModel);
     }
+
+    @Override
+    public ReserveGoodModel selectByReserveId(int reserveId) {
+        return reserveGoodModelMapper.selectByPrimaryKey(reserveId);
+    }
 }
