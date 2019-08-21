@@ -1,9 +1,8 @@
 package com.gy.life.controller;
 
 import com.gy.life.common.ResultEntity;
-import com.gy.life.model.ReserveGoodModel;
+import com.gy.life.model.ReserveGood;
 import com.gy.life.service.impl.ReserveGoodServiceImpl;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +15,7 @@ public class ReserveController {
     ReserveGoodServiceImpl reserveGoodService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    private ResultEntity insertReserve(@RequestBody ReserveGoodModel reserveGoodModel) {
+    private ResultEntity insertReserve(@RequestBody ReserveGood reserveGoodModel) {
         System.out.println("时间" + reserveGoodModel.toString());
         int deleteCount = reserveGoodService.insertServeGood(reserveGoodModel);
         if (deleteCount > 0) {

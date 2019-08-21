@@ -1,18 +1,18 @@
 package com.gy.life.service;
 
-import com.gy.life.model.ReserveGoodModel;
+import com.gy.life.model.ReserveGood;
 
 import java.util.List;
 
 public interface ReserveService {
 
-    int insertServeGood(ReserveGoodModel reserveGoodModel);
+    int insertServeGood(ReserveGood reserveGood);
 
-    List<ReserveGoodModel> selectList();
+    List<ReserveGood> selectList();
 
     int deleteReserve(int reserveId);
 
-    int updateReserve(ReserveGoodModel reserveGoodModel);
+    int updateReserve(ReserveGood reserveGoodModel);
 
-    ReserveGoodModel selectByReserveId(int reserveId);
+    ReserveGood selectByReserveId(int reserveId);
 }

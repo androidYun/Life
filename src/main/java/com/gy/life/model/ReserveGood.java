@@ -1,8 +1,9 @@
 package com.gy.life.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class ReserveGoodModel {
+public class ReserveGood {
     private Integer reserveId;
 
     private String imageUrl;
@@ -28,6 +29,14 @@ public class ReserveGoodModel {
     private String attention;
 
     private Long deliveryMoney;
+
+    private Integer sellOutCount;
+
+    private BigDecimal goodPrice;
+
+    private BigDecimal marketPrice;
+
+    private String publishPhone;
 
     public Integer getReserveId() {
         return reserveId;
@@ -133,23 +142,35 @@ public class ReserveGoodModel {
         this.deliveryMoney = deliveryMoney;
     }
 
+    public Integer getSellOutCount() {
+        return sellOutCount;
+    }
 
-    @Override
-    public String toString() {
-        return "ReserveGoodModel{" +
-                "reserveId=" + reserveId +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", goodName='" + goodName + '\'' +
-                ", goodDesc='" + goodDesc + '\'' +
-                ", createTime=" + createTime +
-                ", maxCount=" + maxCount +
-                ", unit='" + unit + '\'' +
-                ", reserveFinishTime=" + reserveFinishTime +
-                ", deliveryTime=" + deliveryTime +
-                ", pickAddress='" + pickAddress + '\'' +
-                ", deliveryType=" + deliveryType +
-                ", attention='" + attention + '\'' +
-                ", deliveryMoney=" + deliveryMoney +
-                '}';
+    public void setSellOutCount(Integer sellOutCount) {
+        this.sellOutCount = sellOutCount;
+    }
+
+    public BigDecimal getGoodPrice() {
+        return goodPrice;
+    }
+
+    public void setGoodPrice(BigDecimal goodPrice) {
+        this.goodPrice = goodPrice;
+    }
+
+    public BigDecimal getMarketPrice() {
+        return marketPrice;
+    }
+
+    public void setMarketPrice(BigDecimal marketPrice) {
+        this.marketPrice = marketPrice;
+    }
+
+    public String getPublishPhone() {
+        return publishPhone;
+    }
+
+    public void setPublishPhone(String publishPhone) {
+        this.publishPhone = publishPhone;
     }
 }
