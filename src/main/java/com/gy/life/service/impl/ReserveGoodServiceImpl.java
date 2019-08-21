@@ -1,42 +1,40 @@
 package com.gy.life.service.impl;
 
-import com.gy.life.mapper.ReserveGoodModelMapper;
-import com.gy.life.model.ReserveGoodModel;
+import com.gy.life.mapper.ReserveGoodMapper;
+import com.gy.life.model.ReserveGood;
 import com.gy.life.service.ReserveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Component
 public class ReserveGoodServiceImpl implements ReserveService {
-
     @Autowired
-    ReserveGoodModelMapper reserveGoodModelMapper;
+    ReserveGoodMapper reserveGoodMapper;
 
     @Override
-    public int insertServeGood(ReserveGoodModel reserveGoodModel) {
-        return reserveGoodModelMapper.insert(reserveGoodModel);
+    public int insertServeGood(ReserveGood reserveGood) {
+        return reserveGoodMapper.insert(reserveGood);
     }
 
     @Override
-    public List<ReserveGoodModel> selectList() {
-        return reserveGoodModelMapper.selectAll();
+    public List<ReserveGood> selectList() {
+        return reserveGoodMapper.selectAll();
     }
 
     @Override
     public int deleteReserve(int reserveId) {
-        return reserveGoodModelMapper.deleteByPrimaryKey(reserveId);
+        return reserveGoodMapper.deleteByPrimaryKey(reserveId);
     }
 
     @Override
-    public int updateReserve(ReserveGoodModel reserveGoodModel) {
-        return reserveGoodModelMapper.updateByPrimaryKey(reserveGoodModel);
+    public int updateReserve(ReserveGood reserveGoodModel) {
+        return reserveGoodMapper.updateByPrimaryKey(reserveGoodModel);
     }
 
     @Override
-    public ReserveGoodModel selectByReserveId(int reserveId) {
-        return reserveGoodModelMapper.selectByPrimaryKey(reserveId);
+    public ReserveGood selectByReserveId(int reserveId) {
+        return reserveGoodMapper.selectByPrimaryKey(reserveId);
     }
 }
