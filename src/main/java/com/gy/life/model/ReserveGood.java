@@ -1,5 +1,7 @@
 package com.gy.life.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -17,9 +19,9 @@ public class ReserveGood {
     private Integer maxCount;
 
     private String unit;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     private Date reserveFinishTime;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     private Date deliveryTime;
 
     private String pickAddress;
@@ -172,5 +174,28 @@ public class ReserveGood {
 
     public void setPublishPhone(String publishPhone) {
         this.publishPhone = publishPhone;
+    }
+
+    @Override
+    public String toString() {
+        return "ReserveGood{" +
+                "reserveId=" + reserveId +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", goodName='" + goodName + '\'' +
+                ", goodDesc='" + goodDesc + '\'' +
+                ", createTime=" + createTime +
+                ", maxCount=" + maxCount +
+                ", unit='" + unit + '\'' +
+                ", reserveFinishTime=" + reserveFinishTime +
+                ", deliveryTime=" + deliveryTime +
+                ", pickAddress='" + pickAddress + '\'' +
+                ", deliveryType=" + deliveryType +
+                ", attention='" + attention + '\'' +
+                ", deliveryMoney=" + deliveryMoney +
+                ", sellOutCount=" + sellOutCount +
+                ", goodPrice=" + goodPrice +
+                ", marketPrice=" + marketPrice +
+                ", publishPhone='" + publishPhone + '\'' +
+                '}';
     }
 }

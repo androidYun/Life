@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gy.life.mapper.ReserveOrderMapper">
+    <resultMap id="BaseResultMap" type="com.gy.life.model.ReserveOrder">
+        <id column="reserve_order_id" jdbcType="INTEGER" property="reserveOrderId"/>
+        <result column="reserve_id" jdbcType="INTEGER" property="reserveId"/>
+        <result column="buy_count" jdbcType="INTEGER" property="buyCount"/>
+        <result column="buy_time" jdbcType="TIMESTAMP" property="buyTime"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="expect_amount" jdbcType="DECIMAL" property="expectAmount"/>
+        <result column="order_state" jdbcType="INTEGER" property="orderState"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reserve_order
+    where reserve_order_id = #{reserveOrderId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.gy.life.model.ReserveOrder">
+    insert into reserve_order (reserve_order_id, reserve_id, buy_count, 
+      buy_time, user_id, expect_amount, 
+      order_state)
+    values (#{reserveOrderId,jdbcType=INTEGER}, #{reserveId,jdbcType=INTEGER}, #{buyCount,jdbcType=INTEGER}, 
+      #{buyTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{expectAmount,jdbcType=DECIMAL}, 
+      #{orderState,jdbcType=INTEGER})
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ReserveOrder">
+    update reserve_order
+    set reserve_id = #{reserveId,jdbcType=INTEGER},
+      buy_count = #{buyCount,jdbcType=INTEGER},
+      buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      expect_amount = #{expectAmount,jdbcType=DECIMAL},
+      order_state = #{orderState,jdbcType=INTEGER}
+    where reserve_order_id = #{reserveOrderId,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select reserve_order_id, reserve_id, buy_count, buy_time, user_id, expect_amount, 
+    order_state
+    from reserve_order
+    where reserve_order_id = #{reserveOrderId,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select reserve_order_id, reserve_id, buy_count, buy_time, user_id, expect_amount, 
+    order_state
+    from reserve_order
+  </select>
+    <resultMap id="ReserveOrderDetailResultMap" type="com.gy.life.model.ReserveOrderDetail">
+        <association property="reserveOrder" javaType="com.gy.life.model.ReserveOrder">
+            <id column="reserve_order_id" jdbcType="INTEGER" property="reserveOrderId"/>
+            <result column="reserve_id" jdbcType="INTEGER" property="reserveId"/>
+            <result column="buy_count" jdbcType="INTEGER" property="buyCount"/>
+            <result column="buy_time" jdbcType="TIMESTAMP" property="buyTime"/>
+            <result column="user_id" jdbcType="INTEGER" property="userId"/>
+            <result column="expect_amount" jdbcType="DECIMAL" property="expectAmount"/>
+            <result column="order_state" jdbcType="INTEGER" property="orderState"/>
+        </association>
+        <association property="reserveGood" javaType="com.gy.life.model.ReserveGood">
+            <id column="reserve_id" jdbcType="INTEGER" property="reserveId"/>
+            <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
+            <result column="good_name" jdbcType="VARCHAR" property="goodName"/>
+            <result column="good_desc" jdbcType="VARCHAR" property="goodDesc"/>
+            <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+            <result column="max_count" jdbcType="INTEGER" property="maxCount"/>
+            <result column="unit" jdbcType="VARCHAR" property="unit"/>
+            <result column="reserve_finish_time" jdbcType="TIMESTAMP" property="reserveFinishTime"/>
+            <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime"/>
+            <result column="pick_address" jdbcType="VARCHAR" property="pickAddress"/>
+            <result column="delivery_type" jdbcType="INTEGER" property="deliveryType"/>
+            <result column="attention" jdbcType="VARCHAR" property="attention"/>
+            <result column="delivery_money" jdbcType="DECIMAL" property="deliveryMoney"/>
+            <result column="sell_out_count" jdbcType="INTEGER" property="sellOutCount"/>
+            <result column="good_price" jdbcType="DECIMAL" property="goodPrice"/>
+            <result column="market_price" jdbcType="DECIMAL" property="marketPrice"/>
+            <result column="publish_phone" jdbcType="VARCHAR" property="publishPhone"/>
+        </association>
+    </resultMap>
+    <select id="selectDetailList" parameterType="java.lang.Integer" resultMap="ReserveOrderDetailResultMap">
+        SELECT reserve_order.*,reserve_good.* from reserve_order LEFT JOIN reserve_good ON
+        reserve_order.reserve_id=reserve_good.reserve_id where
+        <if test="reserveId>0">
+            reserve_order.reserve_id=#{reserveId}
+        </if>
+    </select>
+</mapper>
