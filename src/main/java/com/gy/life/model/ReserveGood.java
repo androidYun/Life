@@ -1,5 +1,6 @@
 package com.gy.life.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
@@ -19,9 +20,9 @@ public class ReserveGood {
     private Integer maxCount;
 
     private String unit;
-    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd- HH:mm:ss")
     private Date reserveFinishTime;
-    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd- HH:mm:ss")
     private Date deliveryTime;
 
     private String pickAddress;

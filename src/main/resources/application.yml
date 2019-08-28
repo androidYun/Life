@@ -4,6 +4,11 @@ spring:
     username: root
     password: j8787667n
     driver-class-name: com.mysql.jdbc.Driver
+    #时间格式统一返回
+    date-format: yyyy-MM-dd HH:mm:ss #如果使用字符串表示，用这行设置格式
+    timezone: GMT+8
+
+
 mybatis:
   type-aliases-package: com.gy.life.model
   mybatis-config-location: classpath*:mybatis/mybatis-config:xml

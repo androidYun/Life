@@ -1,5 +1,6 @@
 package com.gy.life.service.impl;
 
+import com.gitee.fastmybatis.core.query.Query;
 import com.gy.life.mapper.RoleInformMapper;
 import com.gy.life.model.RoleInform;
 import com.gy.life.service.ManagerService;

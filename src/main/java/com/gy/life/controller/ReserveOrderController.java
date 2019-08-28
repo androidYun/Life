@@ -26,7 +26,7 @@ public class ReserveOrderController {
     ReserveOrderServiceImpl reserveOrderService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    private ResultEntity insertOrder(int userId, int reserveId, int buyCount) {
+    private ResultEntity insertOrder(int reserveId, int userId, int buyCount) {
         ReserveGood reserveGoodModel = reserveGoodService.selectByReserveId(reserveId);
         if (reserveGoodModel == null) {
             return ResultEntity.getErrorResult("此货物不存在");
@@ -44,7 +44,7 @@ public class ReserveOrderController {
         reserveOrder.setOrderState(ReserveOrderStateEnum.Create.getState());
         int insertCount = reserveOrderService.insertIntoReserveOrder(reserveOrder);
         if (insertCount > 0) {
-            return ResultEntity.getErrorResult("添加订单成功");
+            return ResultEntity.getSuccessResult("添加订单成功");
         } else {
             return ResultEntity.getErrorResult("添加订单失败");
         }

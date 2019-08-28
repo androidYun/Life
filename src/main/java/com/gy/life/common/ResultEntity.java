@@ -15,6 +15,14 @@ public class ResultEntity<T> {
         return resultEntity;
     }
 
+    public static ResultEntity getSuccessResult(String message, Object t) {
+        ResultEntity resultEntity = new ResultEntity();
+        resultEntity.data = t;
+        resultEntity.message = message;
+        resultEntity.code = 200;
+        return resultEntity;
+    }
+
     public static ResultEntity getSuccessListPage(PageEntity pageEntity) {
         ResultEntity resultEntity = new ResultEntity();
         resultEntity.data = pageEntity;
