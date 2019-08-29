@@ -22,7 +22,7 @@ public class ReserveGoodServiceImpl implements ReserveService {
 
     @Override
     public List<ReserveGood> selectList() {
-        Page<Object> page = PageHelper.startPage(1, 2);
+        Page<Object> page = PageHelper.startPage(1, 20);
         return reserveGoodMapper.selectAll();
     }
 

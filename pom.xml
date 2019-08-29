@@ -66,6 +66,12 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.12</version>
         </dependency>
+        <!--七牛上传图片-->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>[7.2.0, 7.2.99]</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -87,6 +93,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.gy.life.LiftApplication</mainClass>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>

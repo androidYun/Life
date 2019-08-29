@@ -1,25 +1,33 @@
 package com.gy.life.controller;
 
+import com.google.gson.Gson;
 import com.gy.life.common.ResultEntity;
+import com.gy.life.service.impl.QiniuUploadFileServiceImpl;
 import com.gy.life.utils.FileUtils;
+import com.qiniu.http.Response;
+import com.qiniu.storage.model.DefaultPutRet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Controller
+@RestController
 @RequestMapping(value = "/file")
 public class FileController {
+    @Value("${qiniu.cdn.prefix}")
+    private String cdn;
 
+    @Autowired
+    QiniuUploadFileServiceImpl qiniuUploadFileService;
 
     @RequestMapping(value = "/imageUpdate", method = RequestMethod.POST)
     @ResponseBody
@@ -33,6 +41,22 @@ public class FileController {
             }
         }
         return ResultEntity.getSuccessResult(updatePathList);
+    }
+
+    @RequestMapping(value = "/singleImageUpdate", method = RequestMethod.POST)
+    @ResponseBody
+    private ResultEntity updateImage(@RequestParam("uploadFile") MultipartFile uploadFile) {
+        try {
+            FileInputStream inputStream = (FileInputStream) uploadFile.getInputStream();
+            Response response = qiniuUploadFileService.uploadFile(inputStream);
+            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            System.out.println(putRet.key + "   " + response.bodyString());
+            System.out.println(putRet.hash);
+            return ResultEntity.getSuccessResult("http://" + cdn + "/" + putRet.key);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ResultEntity.getSuccessResult("上传失败");
     }
 
     private String updateFile(HttpSession session, MultipartFile file) {

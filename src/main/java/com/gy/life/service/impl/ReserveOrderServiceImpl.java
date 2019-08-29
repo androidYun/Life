@@ -27,8 +27,8 @@ public class ReserveOrderServiceImpl implements ReserveOrderService {
     @Override
     public ReserveOrder selectByUserIdAndReserveId(int userId, int reserveId) {
         Query query = new Query();
-        query.addParam("userId", userId);
-        query.addParam("reserveId", reserveId);
+        query.eq("user_id", userId);
+        query.eq("reserve_id", reserveId);
         return reserveOrderMapper.getByQuery(query);
     }
 

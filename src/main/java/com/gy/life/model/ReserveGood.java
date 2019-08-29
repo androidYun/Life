@@ -1,6 +1,8 @@
 package com.gy.life.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.gy.life.confirg.DateJsonDeserializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
@@ -20,9 +22,9 @@ public class ReserveGood {
     private Integer maxCount;
 
     private String unit;
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd- HH:mm:ss")
+
     private Date reserveFinishTime;
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd- HH:mm:ss")
+
     private Date deliveryTime;
 
     private String pickAddress;
@@ -100,7 +102,7 @@ public class ReserveGood {
     public Date getReserveFinishTime() {
         return reserveFinishTime;
     }
-
+    //@JsonDeserialize(using = DateJsonDeserializer.class)
     public void setReserveFinishTime(Date reserveFinishTime) {
         this.reserveFinishTime = reserveFinishTime;
     }
@@ -108,7 +110,7 @@ public class ReserveGood {
     public Date getDeliveryTime() {
         return deliveryTime;
     }
-
+   // @JsonDeserialize(using = DateJsonDeserializer.class)
     public void setDeliveryTime(Date deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
