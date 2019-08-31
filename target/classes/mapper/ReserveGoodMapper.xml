@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gy.life.mapper.ReserveGoodModelMapper">
-  <resultMap id="BaseResultMap" type="com.gy.life.model.ReserveGoodModel">
+<mapper namespace="com.gy.life.mapper.ReserveGoodMapper">
+  <resultMap id="BaseResultMap" type="com.gy.life.model.ReserveGood">
     <id column="reserve_id" jdbcType="INTEGER" property="reserveId" />
     <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
     <result column="good_name" jdbcType="VARCHAR" property="goodName" />
@@ -15,24 +15,30 @@
     <result column="delivery_type" jdbcType="INTEGER" property="deliveryType" />
     <result column="attention" jdbcType="VARCHAR" property="attention" />
     <result column="delivery_money" jdbcType="DECIMAL" property="deliveryMoney" />
+    <result column="sell_out_count" jdbcType="INTEGER" property="sellOutCount" />
+    <result column="good_price" jdbcType="DECIMAL" property="goodPrice" />
+    <result column="market_price" jdbcType="DECIMAL" property="marketPrice" />
+    <result column="publish_phone" jdbcType="VARCHAR" property="publishPhone" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from reserve_good
     where reserve_id = #{reserveId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.gy.life.model.ReserveGoodModel">
+  <insert id="insert" parameterType="com.gy.life.model.ReserveGood">
     insert into reserve_good (reserve_id, image_url, good_name, 
       good_desc, create_time, max_count, 
       unit, reserve_finish_time, delivery_time, 
       pick_address, delivery_type, attention, 
-      delivery_money)
+      delivery_money, sell_out_count, good_price, 
+      market_price, publish_phone)
     values (#{reserveId,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, #{goodName,jdbcType=VARCHAR}, 
       #{goodDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{maxCount,jdbcType=INTEGER}, 
       #{unit,jdbcType=VARCHAR}, #{reserveFinishTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP}, 
       #{pickAddress,jdbcType=VARCHAR}, #{deliveryType,jdbcType=INTEGER}, #{attention,jdbcType=VARCHAR}, 
-      #{deliveryMoney,jdbcType=DECIMAL})
+      #{deliveryMoney,jdbcType=DECIMAL}, #{sellOutCount,jdbcType=INTEGER}, #{goodPrice,jdbcType=DECIMAL}, 
+      #{marketPrice,jdbcType=DECIMAL}, #{publishPhone,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ReserveGoodModel">
+  <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ReserveGood">
     update reserve_good
     set image_url = #{imageUrl,jdbcType=VARCHAR},
       good_name = #{goodName,jdbcType=VARCHAR},
@@ -45,18 +51,24 @@
       pick_address = #{pickAddress,jdbcType=VARCHAR},
       delivery_type = #{deliveryType,jdbcType=INTEGER},
       attention = #{attention,jdbcType=VARCHAR},
-      delivery_money = #{deliveryMoney,jdbcType=DECIMAL}
+      delivery_money = #{deliveryMoney,jdbcType=DECIMAL},
+      sell_out_count = #{sellOutCount,jdbcType=INTEGER},
+      good_price = #{goodPrice,jdbcType=DECIMAL},
+      market_price = #{marketPrice,jdbcType=DECIMAL},
+      publish_phone = #{publishPhone,jdbcType=VARCHAR}
     where reserve_id = #{reserveId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select reserve_id, image_url, good_name, good_desc, create_time, max_count, unit, 
-    reserve_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money
+    reserve_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money, 
+    sell_out_count, good_price, market_price, publish_phone
     from reserve_good
     where reserve_id = #{reserveId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select reserve_id, image_url, good_name, good_desc, create_time, max_count, unit, 
-    reserve_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money
+    reserve_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money, 
+    sell_out_count, good_price, market_price, publish_phone
     from reserve_good
   </select>
-</mapper>
+  </mapper>

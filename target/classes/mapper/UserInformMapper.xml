@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gy.life.mapper.UserInformMapper">
+  <resultMap id="BaseResultMap" type="com.gy.life.model.UserInform">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="build_no" jdbcType="VARCHAR" property="buildNo" />
+    <result column="village_name" jdbcType="VARCHAR" property="villageName" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_inform
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gy.life.model.UserInform">
+    insert into user_inform (user_id, name, image_url, 
+      build_no, village_name, phone_number, 
+      integral, open_id)
+    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{buildNo,jdbcType=VARCHAR}, #{villageName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{integral,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gy.life.model.UserInform">
+    update user_inform
+    set name = #{name,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      build_no = #{buildNo,jdbcType=VARCHAR},
+      village_name = #{villageName,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select user_id, name, image_url, build_no, village_name, phone_number, integral, 
+    open_id
+    from user_inform
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select user_id, name, image_url, build_no, village_name, phone_number, integral, 
+    open_id
+    from user_inform
+  </select>
+</mapper>
