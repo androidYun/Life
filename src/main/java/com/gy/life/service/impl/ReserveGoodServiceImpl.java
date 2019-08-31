@@ -1,5 +1,7 @@
 package com.gy.life.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.gy.life.mapper.ReserveGoodMapper;
 import com.gy.life.model.ReserveGood;
 import com.gy.life.service.ReserveService;
@@ -20,6 +22,7 @@ public class ReserveGoodServiceImpl implements ReserveService {
 
     @Override
     public List<ReserveGood> selectList() {
+        Page<Object> page = PageHelper.startPage(1, 20);
         return reserveGoodMapper.selectAll();
     }
 

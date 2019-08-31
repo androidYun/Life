@@ -1,5 +1,10 @@
 package com.gy.life.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.gy.life.confirg.DateJsonDeserializer;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -97,7 +102,7 @@ public class ReserveGood {
     public Date getReserveFinishTime() {
         return reserveFinishTime;
     }
-
+    //@JsonDeserialize(using = DateJsonDeserializer.class)
     public void setReserveFinishTime(Date reserveFinishTime) {
         this.reserveFinishTime = reserveFinishTime;
     }
@@ -105,7 +110,7 @@ public class ReserveGood {
     public Date getDeliveryTime() {
         return deliveryTime;
     }
-
+   // @JsonDeserialize(using = DateJsonDeserializer.class)
     public void setDeliveryTime(Date deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
@@ -172,5 +177,28 @@ public class ReserveGood {
 
     public void setPublishPhone(String publishPhone) {
         this.publishPhone = publishPhone;
+    }
+
+    @Override
+    public String toString() {
+        return "ReserveGood{" +
+                "reserveId=" + reserveId +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", goodName='" + goodName + '\'' +
+                ", goodDesc='" + goodDesc + '\'' +
+                ", createTime=" + createTime +
+                ", maxCount=" + maxCount +
+                ", unit='" + unit + '\'' +
+                ", reserveFinishTime=" + reserveFinishTime +
+                ", deliveryTime=" + deliveryTime +
+                ", pickAddress='" + pickAddress + '\'' +
+                ", deliveryType=" + deliveryType +
+                ", attention='" + attention + '\'' +
+                ", deliveryMoney=" + deliveryMoney +
+                ", sellOutCount=" + sellOutCount +
+                ", goodPrice=" + goodPrice +
+                ", marketPrice=" + marketPrice +
+                ", publishPhone='" + publishPhone + '\'' +
+                '}';
     }
 }

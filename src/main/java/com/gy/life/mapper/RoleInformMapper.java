@@ -2,8 +2,6 @@ package com.gy.life.mapper;
 
 import com.gy.life.model.RoleInform;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

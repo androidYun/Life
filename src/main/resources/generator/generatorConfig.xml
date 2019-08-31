@@ -28,8 +28,8 @@
         <javaClientGenerator targetPackage="com.gy.life.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table schema="Lift" tableName="reserve_good"
-               domainObjectName="ReserveGood" enableCountByExample="false"
+        <table schema="Lift" tableName="build_number"
+               domainObjectName="buildNumberModel" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
             <property name="useActualColumnNames" value="false"/>
