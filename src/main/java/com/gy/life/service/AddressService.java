@@ -17,4 +17,6 @@ public interface AddressService {
     Address selectDefaultAddress();
 
     int updateAddress(Address address);
+
+    int updateDefaultAddress(int addressId,int userId);
 }

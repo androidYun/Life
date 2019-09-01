@@ -5,6 +5,7 @@ import com.gy.life.model.Address;
 import com.gy.life.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,5 +43,13 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public int updateAddress(Address address) {
         return addressMapper.update(address);
+    }
+
+    @Transactional
+    @Override
+    public int updateDefaultAddress(int addressId, int userId) {
+        int i = addressMapper.setDefaultToIsNot(userId);
+        int updateCount = addressMapper.updateDefaultAddress(addressId);
+        return updateCount;
     }
 }

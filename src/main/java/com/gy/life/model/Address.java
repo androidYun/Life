@@ -15,10 +15,10 @@ import javax.persistence.Table;
 @Table(name = "address")
 public class Address {
     @Id
-    @Column(name = "addres_id")
+    @Column(name = "address_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /**  数据库字段：addres_id */
-    private Integer addresId;
+    /**  数据库字段：address_id */
+    private Integer addressId;
 
     /**  数据库字段：province_id */
     private Integer provinceId;
@@ -41,8 +41,8 @@ public class Address {
     /**  数据库字段：community_id */
     private Integer communityId;
 
-    /** 社区名称, 数据库字段：community */
-    private String community;
+    /** 社区名称, 数据库字段：communityName */
+    private String communityName;
 
     /** 楼栋编号, 数据库字段：build_id */
     private Integer buildId;
@@ -50,8 +50,11 @@ public class Address {
     /**  数据库字段：user_id */
     private Integer userId;
 
+
+    private String userName;
+
     /** true 代表1  false代表0 , 数据库字段：is_default */
-    private Byte isDefault;
+    private Boolean isDefault;
 
     /**  数据库字段：phone_number */
     private String phoneNumber;
@@ -60,13 +63,13 @@ public class Address {
     private String defineAddress;
 
     /**  数据库字段：address.addres_id */
-    public void setAddresId(Integer addresId) {
-        this.addresId = addresId;
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
     /**  数据库字段：address.addres_id */
-    public Integer getAddresId() {
-        return this.addresId;
+    public Integer getAddressId() {
+        return this.addressId;
     }
 
     /**  数据库字段：address.province_id */
@@ -139,14 +142,14 @@ public class Address {
         return this.communityId;
     }
 
-    /** 设置社区名称, 数据库字段：address.community */
-    public void setCommunity(String community) {
-        this.community = community;
+    /** 设置社区名称, 数据库字段：address.communityName */
+    public void setCommunityName(String communityName) {
+        this.communityName = communityName;
     }
 
-    /** 获取社区名称, 数据库字段：address.community */
-    public String getCommunity() {
-        return this.community;
+    /** 获取社区名称, 数据库字段：address.communityName */
+    public String getCommunityName() {
+        return this.communityName;
     }
 
     /** 设置楼栋编号, 数据库字段：address.build_id */
@@ -169,13 +172,21 @@ public class Address {
         return this.userId;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     /** 设置true 代表1  false代表0 , 数据库字段：address.is_default */
-    public void setIsDefault(Byte isDefault) {
+    public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
 
     /** 获取true 代表1  false代表0 , 数据库字段：address.is_default */
-    public Byte getIsDefault() {
+    public Boolean getIsDefault() {
         return this.isDefault;
     }
 
@@ -204,7 +215,7 @@ public class Address {
         final int prime = 31;
         int result = 1;
         result = (prime * result) +
-                ((addresId == null) ? 0 : addresId.hashCode());
+                ((addressId == null) ? 0 : addressId.hashCode());
 
         return result;
     }
@@ -225,11 +236,11 @@ public class Address {
 
         Address other = (Address) obj;
 
-        if (addresId == null) {
-            if (other.addresId != null) {
+        if (addressId == null) {
+            if (other.addressId != null) {
                 return false;
             }
-        } else if (!addresId.equals(other.addresId)) {
+        } else if (!addressId.equals(other.addressId)) {
             return false;
         }
 
@@ -240,7 +251,7 @@ public class Address {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Address [");
-        sb.append("addresId=").append(addresId);
+        sb.append("addressId=").append(addressId);
         sb.append(", ");
         sb.append("provinceId=").append(provinceId);
         sb.append(", ");
@@ -256,7 +267,7 @@ public class Address {
         sb.append(", ");
         sb.append("communityId=").append(communityId);
         sb.append(", ");
-        sb.append("community=").append(community);
+        sb.append("communityName=").append(communityName);
         sb.append(", ");
         sb.append("buildId=").append(buildId);
         sb.append(", ");
