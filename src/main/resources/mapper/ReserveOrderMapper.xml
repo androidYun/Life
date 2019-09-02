@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gy.life.mapper.ReserveOrderMapper">
-    <resultMap id="BaseResultMap" type="com.gy.life.model.ReserveOrder">
+    <resultMap id="BaseResultMap" type="com.gy.life.model.ProductOrder">
         <id column="reserve_order_id" jdbcType="INTEGER" property="reserveOrderId"/>
         <result column="reserve_id" jdbcType="INTEGER" property="reserveId"/>
         <result column="buy_count" jdbcType="INTEGER" property="buyCount"/>
@@ -14,7 +14,7 @@
     delete from reserve_order
     where reserve_order_id = #{reserveOrderId,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.gy.life.model.ReserveOrder">
+    <insert id="insert" parameterType="com.gy.life.model.ProductOrder">
     insert into reserve_order (reserve_order_id, reserve_id, buy_count, 
       buy_time, user_id, expect_amount, 
       order_state)
@@ -22,7 +22,7 @@
       #{buyTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{expectAmount,jdbcType=DECIMAL}, 
       #{orderState,jdbcType=INTEGER})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ReserveOrder">
+    <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ProductOrder">
     update reserve_order
     set reserve_id = #{reserveId,jdbcType=INTEGER},
       buy_count = #{buyCount,jdbcType=INTEGER},
@@ -44,7 +44,7 @@
     from reserve_order
   </select>
     <resultMap id="ReserveOrderDetailResultMap" type="com.gy.life.model.ReserveOrderDetail">
-        <association property="reserveOrder" javaType="com.gy.life.model.ReserveOrder">
+        <association property="productOrder" javaType="com.gy.life.model.ProductOrder">
             <id column="reserve_order_id" jdbcType="INTEGER" property="reserveOrderId"/>
             <result column="reserve_id" jdbcType="INTEGER" property="reserveId"/>
             <result column="buy_count" jdbcType="INTEGER" property="buyCount"/>

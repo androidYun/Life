@@ -18,6 +18,8 @@ public class RoleInform {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
+    private String token;
+
     public Integer getRoleId() {
         return roleId;
     }
@@ -64,6 +66,14 @@ public class RoleInform {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override

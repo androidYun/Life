@@ -32,12 +32,12 @@ public class CommunityController {
         List<Community> communities = communityService.selectAllList();
         return ResultEntity.getSuccessResult(communities);
     }
+
     @RequestMapping(value = "/listDetail", method = RequestMethod.GET)
     public ResultEntity selectCommunityDetailList() {
         List<CommunityDetail> communityDetails = communityService.selectCommunityDetail();
         return ResultEntity.getSuccessResult(communityDetails);
     }
-
 
 
     @RequestMapping(value = "/{communityId}", method = RequestMethod.GET)
