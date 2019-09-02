@@ -37,6 +37,13 @@ public class ResultEntity<T> {
         resultEntity.code = 208;
         return resultEntity;
     }
+    public static ResultEntity getErrorResult(int errorCode,String errorMessage) {
+        ResultEntity resultEntity = new ResultEntity();
+        resultEntity.data = null;
+        resultEntity.message = errorMessage;
+        resultEntity.code = errorCode;
+        return resultEntity;
+    }
 
     public int getCode() {
         return code;

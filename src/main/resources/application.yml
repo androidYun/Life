@@ -5,6 +5,8 @@ spring:
     password: j8787667n
     driver-class-name: com.mysql.jdbc.Driver
 
+
+
     #时间格式统一返回
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #如果使用字符串表示，用这行设置格式
@@ -35,4 +37,17 @@ qiniu:
   #外链访问路径
   cdn:
     prefix: "pwz4hw6y3.bkt.clouddn.com"
+
+#token验证
+jwt:
+  secret: "123343"
+  #服务端接口配置
+#server:
+#  port: 8084
+#  servlet:
+#    context-path: /api
+oauth:
+  wx:
+    appId: "wxdf1cc25eab15af0c"
+    secret: "8c965d3a3ed78de5423b665702607fed"
 

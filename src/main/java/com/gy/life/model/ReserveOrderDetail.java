@@ -3,7 +3,7 @@ package com.gy.life.model;
 public class ReserveOrderDetail {
     private ReserveGood reserveGood;
 
-    private ReserveOrder reserveOrder;
+    private ProductOrder productOrder;
 
     public ReserveGood getReserveGood() {
         return reserveGood;
@@ -13,11 +13,11 @@ public class ReserveOrderDetail {
         this.reserveGood = reserveGood;
     }
 
-    public ReserveOrder getReserveOrder() {
-        return reserveOrder;
+    public ProductOrder getProductOrder() {
+        return productOrder;
     }
 
-    public void setReserveOrder(ReserveOrder reserveOrder) {
-        this.reserveOrder = reserveOrder;
+    public void setProductOrder(ProductOrder productOrder) {
+        this.productOrder = productOrder;
     }
 }
