@@ -15,4 +15,6 @@ public interface OrderService {
     PageEntity<ReserveOrderDetail> selectByReserveId(int reserveId);
 
     int insertProductOrderItem(List<OrderRequest> orderRequest, int orderId);
+
+    int insertProductOrderItem(int buyCount, int productId, int orderId);
 }

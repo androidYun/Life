@@ -25,5 +25,13 @@ public class AddressController {
             return ResultEntity.getSuccessResult("添加失败");
         }
     }
+    @RequestMapping(value = "/default", method = RequestMethod.GET)
+    public ResultEntity getDefaultAddress(int userId) {
+        Address address = addressService.selectDefaultAddress(userId);
+        if (address == null) {
+            return ResultEntity.getErrorResult("没有默认地址");
+        }
+        return ResultEntity.getSuccessResult(address);
+    }
 
 }

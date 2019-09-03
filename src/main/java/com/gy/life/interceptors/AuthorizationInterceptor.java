@@ -34,6 +34,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             responseMessage(response, ResultEntity.getErrorResult(70002, "请从新登陆"));
             return true;
         }
+        System.out.println("dddd" + token);
         request.setAttribute("userId", userId);
         request.setAttribute("phoneNumber", phoneNumber);
         return false;

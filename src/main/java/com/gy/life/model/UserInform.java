@@ -40,6 +40,8 @@ public class UserInform {
 
     /**  数据库字段：open_id */
     private String openId;
+    /**  数据库字段：token */
+    private String token;
 
     /**  数据库字段：user_inform.user_id */
     public void setUserId(Integer userId) {
@@ -119,6 +121,14 @@ public class UserInform {
     /**  数据库字段：user_inform.open_id */
     public String getOpenId() {
         return this.openId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override

@@ -1,11 +1,16 @@
 package com.gy.life.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.model.ProductCart;
+import com.gy.life.model.request.CartProductParams;
 import com.gy.life.service.impl.CartServiceImpl;
 import com.gy.life.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequestMapping(value = "/cart")
 @RestController
@@ -20,7 +25,6 @@ public class ProductCartController {
             ResultEntity.getErrorResult("添加的商品不能为空");
         }
         ProductCart selectProduct = cartService.selectByUserId(productCart.getUserId(), productCart.getProductId());
-
         if (selectProduct != null) {
             selectProduct.setCartCount(selectProduct.getCartCount() + productCart.getCartCount());
             cartService.updateCart(selectProduct);
@@ -49,13 +53,27 @@ public class ProductCartController {
         return ResultEntity.getSuccessResult(cartService.selectAllList(userId));
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ResultEntity updateCart(int cartId, int buyCount) {
+    @RequestMapping(value = "/cartProductList", method = RequestMethod.POST)
+    public ResultEntity selectCartProductList(@RequestBody CartProductParams cartProductParams) {
+
+        List<Integer> list = JSON.parseArray(cartProductParams.getCartIdJson(), Integer.class);
+        List<Integer> cartIdList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            cartIdList.add(list.get(i));
+        }
+        if (cartIdList.size() == 0) {
+            return ResultEntity.getErrorResult("");
+        }
+        return ResultEntity.getSuccessResult(cartService.selectCartGoodList(cartIdList));
+    }
+
+    @RequestMapping(value = "/updateCount", method = RequestMethod.GET)
+    public ResultEntity updateCart(int cartId, int cartCount) {
         ProductCart selectProduct = cartService.selectByCart(cartId);
         if (selectProduct == null) {
             return ResultEntity.getErrorResult("此购物车不存在");
         }
-        selectProduct.setCartCount(selectProduct.getCartCount() + buyCount);
+        selectProduct.setCartCount(cartCount);
         int updateCount = cartService.updateCart(selectProduct);
         if (updateCount > 0) {
             return ResultEntity.getSuccessResult("更新成功");
@@ -63,9 +81,9 @@ public class ProductCartController {
         return ResultEntity.getErrorResult("更新失败");
     }
 
-    @RequestMapping(value = "/delete/{CartId}", method = RequestMethod.POST)
-    public ResultEntity deleteCart(@PathVariable("CartId") int CartId) {
-        int deleteCartCount = cartService.deleteCart(CartId);
+    @RequestMapping(value = "/delete/{cartId}", method = RequestMethod.GET)
+    public ResultEntity deleteCart(@PathVariable("cartId") int cartId) {
+        int deleteCartCount = cartService.deleteCart(cartId);
         if (deleteCartCount > 0) {
             return ResultEntity.getSuccessResult("删除成功");
         }

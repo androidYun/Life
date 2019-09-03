@@ -35,8 +35,8 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address selectDefaultAddress() {
-        return addressMapper.selectDefaultAddress(1);
+    public Address selectDefaultAddress(int userId) {
+        return addressMapper.selectDefaultAddress(userId);
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.gy.life.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.net.CacheRequest;
 import java.util.List;
 
 @Component
@@ -45,5 +46,12 @@ public class CartServiceImpl implements CartService {
     public int deleteCart(int CartId) {
         return productCartMapper.deleteById(CartId);
     }
+
+    @Override
+    public List<ProductCartDetail> selectCartGoodList(List<Integer> cartListId) {
+        System.out.println("对不对"+ cartListId);
+        return productCartMapper.selectListByCartId(cartListId);
+    }
+
 
 }

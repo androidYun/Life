@@ -32,12 +32,8 @@ public class JwtTokenUtils {
         return generateToken(userMap);
     }
 
-    public String createToken(String phoneNumber,
-                              String userName,
-                              String userId) {
+    public String createToken(String userId) {
         Map<String, Object> userMap = new HashMap<String, Object>();
-        userMap.put(PHONE_NUMBER_KEY, phoneNumber);
-        userMap.put(USER_NAME_KEY, userName);
         userMap.put(USER_ID, userId);
         return generateToken(userMap);
     }

@@ -3,6 +3,7 @@ package com.gy.life.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gy.life.common.ResultEntity;
+import com.gy.life.jwt.JwtTokenUtils;
 import com.gy.life.model.UserInform;
 import com.gy.life.service.impl.UserInformServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class WxController {
     @Autowired
     UserInformServiceImpl userInformService;
 
+    @Autowired
+    JwtTokenUtils jwtTokenUtils;
+
 
     @RequestMapping(value = "/login")
     public ResultEntity login(String code) {
@@ -43,12 +47,17 @@ public class WxController {
         String openid = jsonObject.getString("openid");
         String session_key = jsonObject.getString("session_key");
         UserInform selectUserInform = userInformService.selectUserByOpenId(openid);
+
         if (selectUserInform == null) {
             UserInform userInform = new UserInform();
             userInform.setOpenId(openid);
-            userInformService.insertUserInform(userInform);
+            int userId = userInformService.insertUserInform(userInform);
+            String token = jwtTokenUtils.createToken(userId + "");
+            userInform.setToken(token);
             return ResultEntity.getSuccessResult(userInform);
         } else {
+            String token = jwtTokenUtils.createToken(selectUserInform.getUserId() + "");
+            selectUserInform.setToken(token);
             return ResultEntity.getSuccessResult(selectUserInform);
         }
     }

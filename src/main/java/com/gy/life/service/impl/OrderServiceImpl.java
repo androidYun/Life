@@ -74,4 +74,14 @@ public class OrderServiceImpl implements OrderService {
 
         return saveMulti;
     }
+
+    @Override
+    public int insertProductOrderItem(int buyCount, int productId, int orderId) {
+        OrderProductItem orderProductItem = new OrderProductItem();
+        orderProductItem.setBuyCount(buyCount);
+        orderProductItem.setOrderId(orderId);
+        orderProductItem.setProductId(productId);
+        int insetCount = orderProductItemMapper.save(orderProductItem);
+        return insetCount;
+    }
 }
