@@ -3,10 +3,13 @@ package com.gy.life.controller;
 import com.alibaba.fastjson.JSON;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.model.ProductCart;
+import com.gy.life.model.request.CartProductParams;
 import com.gy.life.service.impl.CartServiceImpl;
 import com.gy.life.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 import java.util.List;
 
@@ -23,7 +26,6 @@ public class ProductCartController {
             ResultEntity.getErrorResult("添加的商品不能为空");
         }
         ProductCart selectProduct = cartService.selectByUserId(productCart.getUserId(), productCart.getProductId());
-
         if (selectProduct != null) {
             selectProduct.setCartCount(selectProduct.getCartCount() + productCart.getCartCount());
             cartService.updateCart(selectProduct);

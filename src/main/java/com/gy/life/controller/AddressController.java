@@ -28,6 +28,14 @@ public class AddressController {
             return ResultEntity.getErrorResult("添加失败");
         }
     }
+    @RequestMapping(value = "/default", method = RequestMethod.GET)
+    public ResultEntity getDefaultAddress(int userId) {
+        Address address = addressService.selectDefaultAddress(userId);
+        if (address == null) {
+            return ResultEntity.getErrorResult("没有默认地址");
+        }
+        return ResultEntity.getSuccessResult(address);
+    }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResultEntity loadAllAddress(int userId) {
@@ -86,13 +94,5 @@ public class AddressController {
         } else {
             return ResultEntity.getErrorResult("更新失败");
         }
-    }
-    @RequestMapping(value = "/default", method = RequestMethod.GET)
-    public ResultEntity getDefaultAddress(int userId) {
-        Address address = addressService.selectDefaultAddress(userId);
-        if (address == null) {
-            return ResultEntity.getErrorResult("没有默认地址");
-        }
-        return ResultEntity.getSuccessResult(address);
     }
 }

@@ -3,7 +3,9 @@ package com.gy.life.controller;
 import com.gy.life.common.PageRequest;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.model.ProductOrder;
+import com.gy.life.model.ReserveGood;
 import com.gy.life.model.request.CartParams;
+import com.gy.life.model.request.GoodCreateOrderParams;
 import com.gy.life.model.request.OrderRequest;
 import com.gy.life.service.impl.ReserveGoodServiceImpl;
 import com.gy.life.service.impl.OrderServiceImpl;
@@ -40,7 +42,28 @@ public class OrderController {
         } else {
             return ResultEntity.getErrorResult("添加失败");
         }
+    }
 
+    @Transactional
+    @RequestMapping(value = "/addGood", method = RequestMethod.POST)
+    public ResultEntity insertOrder(@RequestBody GoodCreateOrderParams goodCreateOrderParams) {
+        ReserveGood reserveGood = reserveGoodService.selectByReserveId(goodCreateOrderParams.getProductId());
+        if (reserveGood == null) {
+            return ResultEntity.getErrorResult("此物品不存在");
+        }
+        ProductOrder productOrder = new ProductOrder();
+        productOrder.setLeaveMessage(goodCreateOrderParams.getLeaveMessage());
+        productOrder.setOrderStatus(0);
+        productOrder.setOrderTime(DateUtils.INSTANCE.getCurrentTime());
+        productOrder.setTotalPrice(goodCreateOrderParams.getTotalPrice());
+        productOrder.setUserId(goodCreateOrderParams.getUserId());
+        int productOrderId = reserveOrderService.insertOrder(productOrder);
+        int insertCount = reserveOrderService.insertProductOrderItem(goodCreateOrderParams.getBuyCount(), goodCreateOrderParams.getProductId(), productOrderId);
+        if (insertCount > 0) {
+            return ResultEntity.getSuccessResult("添加成功");
+        } else {
+            return ResultEntity.getErrorResult("添加失败");
+        }
     }
 
     @RequestMapping(value = "/detail", method = RequestMethod.POST)

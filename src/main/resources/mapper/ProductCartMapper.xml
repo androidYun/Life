@@ -32,7 +32,12 @@
 
 
     <select id="selectCartDetails" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select pc.*,rg.* from product_cart pc  LEFT JOIN  reserve_good rg on pc.product_id=rg.reserve_id where user_id=#{userId} LIMIT 1
+    select pc.*,rg.* from product_cart pc  LEFT JOIN  reserve_good rg on pc.product_id=rg.reserve_id where user_id=#{userId}
   </select>
 
+    <select id="selectListByCartId" parameterType="java.util.List" resultMap="BaseResultMap">
+        select pc.*,rg.* from product_cart pc LEFT JOIN reserve_good rg on pc.product_id=rg.reserve_id where pc.cart_id in
+        <foreach item="item" collection="cardIdList" separator="," open="(" close=")" index="">  #{item, jdbcType=INTEGER}
+        </foreach>
+    </select>
 </mapper>

@@ -72,7 +72,10 @@
             <artifactId>qiniu-java-sdk</artifactId>
             <version>[7.2.0, 7.2.99]</version>
         </dependency>
+<<<<<<< HEAD
         <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+=======
+>>>>>>> bff75bd61ace82f108f885576c7f37a2e2a46a86
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>

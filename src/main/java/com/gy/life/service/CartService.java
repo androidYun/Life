@@ -15,9 +15,9 @@ public interface CartService {
 
     List<ProductCartDetail> selectAllList(int userId);
 
+    List<ProductCartDetail> selectCartGoodList(List<Integer> cartListId);
 
     int updateCart(ProductCart productCart);
-
 
     int deleteCart(int cartId);
 }
