@@ -1,16 +1,16 @@
 package com.gy.life.model;
 
 public class ReserveOrderDetail {
-    private ReserveGood reserveGood;
+    private ProductDetail productDetail;
 
     private ProductOrder productOrder;
 
-    public ReserveGood getReserveGood() {
-        return reserveGood;
+    public ProductDetail getProductDetail() {
+        return productDetail;
     }
 
-    public void setReserveGood(ReserveGood reserveGood) {
-        this.reserveGood = reserveGood;
+    public void setProductDetail(ProductDetail productDetail) {
+        this.productDetail = productDetail;
     }
 
     public ProductOrder getProductOrder() {

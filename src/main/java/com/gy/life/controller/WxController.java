@@ -9,6 +9,7 @@ import com.gy.life.service.impl.UserInformServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -35,7 +36,7 @@ public class WxController {
     JwtTokenUtils jwtTokenUtils;
 
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ResultEntity login(String code) {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid={appId}&secret={secret}&js_code={code}&grant_type=authorization_code";
         Map<String, Object> map = new HashMap<>();
@@ -52,12 +53,13 @@ public class WxController {
             UserInform userInform = new UserInform();
             userInform.setOpenId(openid);
             int userId = userInformService.insertUserInform(userInform);
-            String token = jwtTokenUtils.createToken(userId + "");
-            userInform.setToken(token);
+//            String token = jwtTokenUtils.createToken(userId + "");
+//            userInform.setToken(token);
             return ResultEntity.getSuccessResult(userInform);
         } else {
-            String token = jwtTokenUtils.createToken(selectUserInform.getUserId() + "");
-            selectUserInform.setToken(token);
+            System.out.println("ddd"+selectUserInform.getUserId());
+//            String token = jwtTokenUtils.createToken(selectUserInform.getUserId() + "");
+//            selectUserInform.setToken(token);
             return ResultEntity.getSuccessResult(selectUserInform);
         }
     }

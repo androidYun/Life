@@ -1,7 +1,7 @@
 package com.gy.life.controller;
 
 import com.gy.life.common.ResultEntity;
-import com.gy.life.model.ReserveGood;
+import com.gy.life.model.ProductDetail;
 import com.gy.life.service.impl.ReserveGoodServiceImpl;
 import com.gy.life.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +16,11 @@ public class ReserveController {
     ReserveGoodServiceImpl reserveGoodService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    private ResultEntity insertReserve(@RequestBody ReserveGood reserveGoodModel) {
-        System.out.println("时间" + reserveGoodModel.toString());
-        reserveGoodModel.setSellOutCount(0);
-        reserveGoodModel.setCreateTime(DateUtils.INSTANCE.getCurrentTime());
-        int insertCount = reserveGoodService.insertServeGood(reserveGoodModel);
+    private ResultEntity insertReserve(@RequestBody ProductDetail productDetailModel) {
+        System.out.println("时间" + productDetailModel.toString());
+        productDetailModel.setSellOutCount(0);
+        productDetailModel.setCreateTime(DateUtils.INSTANCE.getCurrentTime());
+        int insertCount = reserveGoodService.insertServeGood(productDetailModel);
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
         } else {
@@ -29,13 +29,13 @@ public class ReserveController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    private ResultEntity updateReserve(@RequestBody ReserveGood reserveGoodModel) {
-        ReserveGood reserveGood = reserveGoodService.selectByReserveId(reserveGoodModel.getReserveId());
-        if (reserveGood == null) {
+    private ResultEntity updateReserve(@RequestBody ProductDetail productDetailModel) {
+        ProductDetail productDetail = reserveGoodService.selectByReserveId(productDetailModel.getProductId());
+        if (productDetail == null) {
             return ResultEntity.getErrorResult("此物品不存在");
         }
-        reserveGoodModel.setCreateTime(reserveGood.getCreateTime());
-        int updateCount = reserveGoodService.updateReserve(reserveGoodModel);
+        productDetailModel.setCreateTime(productDetail.getCreateTime());
+        int updateCount = reserveGoodService.updateReserve(productDetailModel);
         if (updateCount > 0) {
             return ResultEntity.getSuccessResult("更新成功");
         } else {
@@ -48,9 +48,9 @@ public class ReserveController {
         return ResultEntity.getSuccessResult(reserveGoodService.selectList());
     }
 
-    @RequestMapping(value = "/delete/{reserveId}", method = RequestMethod.GET)
-    public ResultEntity deleteReserve(@PathVariable("reserveId") int reserveId) {
-        int deleteCount = reserveGoodService.deleteReserve(reserveId);
+    @RequestMapping(value = "/delete/{productId}", method = RequestMethod.GET)
+    public ResultEntity deleteReserve(@PathVariable("productId") int productId) {
+        int deleteCount = reserveGoodService.deleteReserve(productId);
         if (deleteCount > 0) {
             return ResultEntity.getSuccessResult(reserveGoodService.selectList());
         } else {
@@ -59,11 +59,11 @@ public class ReserveController {
 
     }
 
-    @RequestMapping(value = "/{reserveId}", method = RequestMethod.GET)
-    public ResultEntity loadReserve(@PathVariable("reserveId") int reserveId) {
-        ReserveGood reserveGood = reserveGoodService.selectByReserveId(reserveId);
-        if (reserveGood != null) {
-            return ResultEntity.getSuccessResult(reserveGood);
+    @RequestMapping(value = "/{productId}", method = RequestMethod.GET)
+    public ResultEntity loadReserve(@PathVariable("productId") int productId) {
+        ProductDetail productDetail = reserveGoodService.selectByReserveId(productId);
+        if (productDetail != null) {
+            return ResultEntity.getSuccessResult(productDetail);
         } else {
             return ResultEntity.getErrorResult("此预购物品不存在");
         }
