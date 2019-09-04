@@ -3,7 +3,7 @@ package com.gy.life.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.gy.life.mapper.ReserveGoodMapper;
-import com.gy.life.model.ReserveGood;
+import com.gy.life.model.ProductDetail;
 import com.gy.life.service.ReserveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,12 +16,12 @@ public class ReserveGoodServiceImpl implements ReserveService {
     ReserveGoodMapper reserveGoodMapper;
 
     @Override
-    public int insertServeGood(ReserveGood reserveGood) {
-        return reserveGoodMapper.insert(reserveGood);
+    public int insertServeGood(ProductDetail productDetail) {
+        return reserveGoodMapper.insert(productDetail);
     }
 
     @Override
-    public List<ReserveGood> selectList() {
+    public List<ProductDetail> selectList() {
         Page<Object> page = PageHelper.startPage(1, 20);
         return reserveGoodMapper.selectAll();
     }
@@ -32,12 +32,12 @@ public class ReserveGoodServiceImpl implements ReserveService {
     }
 
     @Override
-    public int updateReserve(ReserveGood reserveGoodModel) {
-        return reserveGoodMapper.updateByPrimaryKey(reserveGoodModel);
+    public int updateReserve(ProductDetail productDetailModel) {
+        return reserveGoodMapper.updateByPrimaryKey(productDetailModel);
     }
 
     @Override
-    public ReserveGood selectByReserveId(int reserveId) {
+    public ProductDetail selectByReserveId(int reserveId) {
         return reserveGoodMapper.selectByPrimaryKey(reserveId);
     }
 }

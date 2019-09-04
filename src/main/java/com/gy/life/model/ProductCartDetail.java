@@ -3,7 +3,7 @@ package com.gy.life.model;
 public class ProductCartDetail {
     private ProductCart productCart;
 
-    private ReserveGood reserveGood;
+    private ProductDetail productDetail;
 
 
     public ProductCart getProductCart() {
@@ -14,11 +14,11 @@ public class ProductCartDetail {
         this.productCart = productCart;
     }
 
-    public ReserveGood getReserveGood() {
-        return reserveGood;
+    public ProductDetail getProductDetail() {
+        return productDetail;
     }
 
-    public void setReserveGood(ReserveGood reserveGood) {
-        this.reserveGood = reserveGood;
+    public void setProductDetail(ProductDetail productDetail) {
+        this.productDetail = productDetail;
     }
 }

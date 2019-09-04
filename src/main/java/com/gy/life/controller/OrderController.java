@@ -3,10 +3,10 @@ package com.gy.life.controller;
 import com.gy.life.common.PageRequest;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.model.ProductOrder;
-import com.gy.life.model.ReserveGood;
+import com.gy.life.model.ProductDetail;
+import com.gy.life.model.order.ProductOrderDetail;
 import com.gy.life.model.request.CartParams;
 import com.gy.life.model.request.GoodCreateOrderParams;
-import com.gy.life.model.request.OrderRequest;
 import com.gy.life.service.impl.ReserveGoodServiceImpl;
 import com.gy.life.service.impl.OrderServiceImpl;
 import com.gy.life.utils.DateUtils;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -24,7 +23,7 @@ public class OrderController {
     ReserveGoodServiceImpl reserveGoodService;
 
     @Autowired
-    OrderServiceImpl reserveOrderService;
+    OrderServiceImpl orderService;
 
     @Transactional
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -35,8 +34,8 @@ public class OrderController {
         productOrder.setOrderTime(DateUtils.INSTANCE.getCurrentTime());
         productOrder.setTotalPrice(cartParams.getTotalPrice());
         productOrder.setUserId(cartParams.getUserId());
-        int productOrderId = reserveOrderService.insertOrder(productOrder);
-        int insertCount = reserveOrderService.insertProductOrderItem(cartParams.getCartList(), productOrderId);
+        int productOrderId = orderService.insertOrder(productOrder);
+        int insertCount = orderService.insertProductOrderItem(cartParams.getCartList(), productOrderId);
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
         } else {
@@ -47,8 +46,8 @@ public class OrderController {
     @Transactional
     @RequestMapping(value = "/addGood", method = RequestMethod.POST)
     public ResultEntity insertOrder(@RequestBody GoodCreateOrderParams goodCreateOrderParams) {
-        ReserveGood reserveGood = reserveGoodService.selectByReserveId(goodCreateOrderParams.getProductId());
-        if (reserveGood == null) {
+        ProductDetail productDetail = reserveGoodService.selectByReserveId(goodCreateOrderParams.getProductId());
+        if (productDetail == null) {
             return ResultEntity.getErrorResult("此物品不存在");
         }
         ProductOrder productOrder = new ProductOrder();
@@ -57,8 +56,8 @@ public class OrderController {
         productOrder.setOrderTime(DateUtils.INSTANCE.getCurrentTime());
         productOrder.setTotalPrice(goodCreateOrderParams.getTotalPrice());
         productOrder.setUserId(goodCreateOrderParams.getUserId());
-        int productOrderId = reserveOrderService.insertOrder(productOrder);
-        int insertCount = reserveOrderService.insertProductOrderItem(goodCreateOrderParams.getBuyCount(), goodCreateOrderParams.getProductId(), productOrderId);
+        int productOrderId = orderService.insertOrder(productOrder);
+        int insertCount = orderService.insertProductOrderItem(goodCreateOrderParams.getBuyCount(), goodCreateOrderParams.getProductId(), productOrderId);
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
         } else {
@@ -68,6 +67,14 @@ public class OrderController {
 
     @RequestMapping(value = "/detail", method = RequestMethod.POST)
     private ResultEntity loadOrderDetail(int reserveId, @RequestBody PageRequest pageData) {
-        return ResultEntity.getSuccessListPage(reserveOrderService.selectByReserveId(reserveId));
+        return ResultEntity.getSuccessListPage(orderService.selectByReserveId(reserveId));
     }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ResultEntity loadOrderList(int userId, int orderStatus) {
+        List<ProductOrderDetail> productOrderDetails = orderService.selectOrderProductList(userId, orderStatus);
+        System.out.println("ddddd"+productOrderDetails.toString());
+        return ResultEntity.getSuccessResult(productOrderDetails);
+    }
+
 }

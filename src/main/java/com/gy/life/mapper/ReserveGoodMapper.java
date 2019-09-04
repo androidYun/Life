@@ -1,16 +1,17 @@
 package com.gy.life.mapper;
 
-import com.gy.life.model.ReserveGood;
+import com.gy.life.model.ProductDetail;
+
 import java.util.List;
 
 public interface ReserveGoodMapper {
     int deleteByPrimaryKey(Integer reserveId);
 
-    int insert(ReserveGood record);
+    int insert(ProductDetail record);
 
-    ReserveGood selectByPrimaryKey(Integer reserveId);
+    ProductDetail selectByPrimaryKey(Integer reserveId);
 
-    List<ReserveGood> selectAll();
+    List<ProductDetail> selectAll();
 
-    int updateByPrimaryKey(ReserveGood record);
+    int updateByPrimaryKey(ProductDetail record);
 }

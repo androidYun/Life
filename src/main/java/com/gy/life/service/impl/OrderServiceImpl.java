@@ -6,42 +6,43 @@ import com.github.pagehelper.PageHelper;
 import com.gy.life.common.PageEntity;
 import com.gy.life.mapper.OrderProductItemMapper;
 import com.gy.life.mapper.ProductCartMapper;
-import com.gy.life.mapper.ReserveOrderMapper;
+import com.gy.life.mapper.ProductOrderMapper;
 import com.gy.life.model.OrderProductItem;
 import com.gy.life.model.ProductOrder;
+import com.gy.life.model.order.ProductOrderDetail;
 import com.gy.life.model.request.OrderRequest;
 import com.gy.life.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Component
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    ReserveOrderMapper reserveOrderMapper;
+    ProductOrderMapper productOrderMapper;
 
     @Autowired
     OrderProductItemMapper orderProductItemMapper;
-
 
     @Autowired
     ProductCartMapper productCartMapper;
 
     @Override
     public int insertOrder(ProductOrder productOrder) {
-        return reserveOrderMapper.save(productOrder);
+        return productOrderMapper.save(productOrder);
     }
 
     @Override
     public ProductOrder selectByUserIdAndReserveId(int userId, int reserveId) {
         Query query = new Query();
         query.eq("user_id", userId);
-        query.eq("reserve_id", reserveId);
-        return reserveOrderMapper.getByQuery(query);
+        query.eq("product_id_id", reserveId);
+        return productOrderMapper.getByQuery(query);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
         pageEntity.setPageIndex(startPage.getPages());
         pageEntity.setTotalPageSize(startPage.getPageSize());
         pageEntity.setList(startPage.getResult());
-        reserveOrderMapper.selectDetailList(reserveId);
+        productOrderMapper.selectDetailList(reserveId);
         return pageEntity;
     }
 
@@ -83,5 +84,10 @@ public class OrderServiceImpl implements OrderService {
         orderProductItem.setProductId(productId);
         int insetCount = orderProductItemMapper.save(orderProductItem);
         return insetCount;
+    }
+
+    @Override
+    public List<ProductOrderDetail> selectOrderProductList(int userId, int orderStatus) {
+        return productOrderMapper.selectOrderProductList(orderStatus,userId);
     }
 }

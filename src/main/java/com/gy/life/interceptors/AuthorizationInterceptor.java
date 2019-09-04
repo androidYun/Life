@@ -22,6 +22,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("测试"+request.getPathInfo());
         String token = request.getHeader("token");
         if (StringUtils.isEmpty(token)) {
             responseMessage(response, ResultEntity.getErrorResult(70002, "token不能为空"));
