@@ -4,6 +4,7 @@
 
     <resultMap id="OrderProductMap" type="com.gy.life.model.order.ProductOrderDetail">
         <id column="order_id" jdbcType="INTEGER" property="orderId"/>
+        <id column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
         <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
         <result column="user_id" jdbcType="INTEGER" property="userId"/>
         <result column="total_price" jdbcType="DECIMAL" property="totalPrice"/>

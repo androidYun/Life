@@ -19,7 +19,7 @@ public class ReserveController {
     private ResultEntity insertReserve(@RequestBody ProductDetail productDetailModel) {
         System.out.println("时间" + productDetailModel.toString());
         productDetailModel.setSellOutCount(0);
-        productDetailModel.setCreateTime(DateUtils.INSTANCE.getCurrentTime());
+        productDetailModel.setCreateTime(DateUtils.getCurrentTime());
         int insertCount = reserveGoodService.insertServeGood(productDetailModel);
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");

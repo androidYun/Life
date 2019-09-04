@@ -56,13 +56,10 @@ public class Address {
     private Integer communityId;
 
     /**
-     * 社区名称, 数据库字段：communityName
+     * 社区名称, 数据库字段：community_name
      */
     private String communityName;
-    /**
-     * 社区名称, 数据库字段：community
-     */
-    private String community;
+
 
     /**
      * 楼栋编号, 数据库字段：build_id
@@ -256,103 +253,119 @@ public class Address {
 
 
     /**
-         * 数据库字段：address.phone_number
-         */
-        public void setPhoneNumber (String phoneNumber){
-            this.phoneNumber = phoneNumber;
-        }
+     * 数据库字段：address.phone_number
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-        /**
-         * 数据库字段：address.phone_number
-         */
-        public String getPhoneNumber () {
-            return this.phoneNumber;
-        }
+    /**
+     * 数据库字段：address.phone_number
+     */
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
 
-        /**
-         * 设置如果选择的地址不存在可以 自定义地址, 数据库字段：address.define_address
-         */
-        public void setDefineAddress (String defineAddress){
-            this.defineAddress = defineAddress;
-        }
+    /**
+     * 设置如果选择的地址不存在可以 自定义地址, 数据库字段：address.define_address
+     */
+    public void setDefineAddress(String defineAddress) {
+        this.defineAddress = defineAddress;
+    }
 
-        /**
-         * 获取如果选择的地址不存在可以 自定义地址, 数据库字段：address.define_address
-         */
-        public String getDefineAddress () {
-            return this.defineAddress;
-        }
+    /**
+     * 获取如果选择的地址不存在可以 自定义地址, 数据库字段：address.define_address
+     */
+    public String getDefineAddress() {
+        return this.defineAddress;
+    }
 
-        @Override
-        public int hashCode () {
-            final int prime = 31;
-            int result = 1;
-            result = (prime * result) +
-                    ((addressId == null) ? 0 : addressId.hashCode());
+    public Integer getBuildId() {
+        return buildId;
+    }
 
-            return result;
-        }
+    public void setBuildId(Integer buildId) {
+        this.buildId = buildId;
+    }
 
-        @Override
-        public boolean equals (Object obj){
-            if (this == obj) {
-                return true;
-            }
+    public Boolean getDefault() {
+        return isDefault;
+    }
 
-            if (obj == null) {
-                return false;
-            }
+    public void setDefault(Boolean aDefault) {
+        isDefault = aDefault;
+    }
 
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (prime * result) +
+                ((addressId == null) ? 0 : addressId.hashCode());
 
-            Address other = (Address) obj;
+        return result;
+    }
 
-            if (addressId == null) {
-                if (other.addressId != null) {
-                    return false;
-                }
-            } else if (!addressId.equals(other.addressId)) {
-                return false;
-            }
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
 
-        @Override
-        public String toString () {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Address [");
-            sb.append("addressId=").append(addressId);
-            sb.append(", ");
-            sb.append("provinceId=").append(provinceId);
-            sb.append(", ");
-            sb.append("province=").append(province);
-            sb.append(", ");
-            sb.append("cityId=").append(cityId);
-            sb.append(", ");
-            sb.append("city=").append(city);
-            sb.append(", ");
-            sb.append("areaId=").append(areaId);
-            sb.append(", ");
-            sb.append("area=").append(area);
-            sb.append(", ");
-            sb.append("communityId=").append(communityId);
-            sb.append(", ");
-            sb.append("communityName=").append(communityName);
-            sb.append(", ");
-            sb.append("buildId=").append(buildId);
-            sb.append(", ");
-            sb.append("userId=").append(userId);
-            sb.append(", ");
-            sb.append("isDefault=").append(isDefault);
-            sb.append(", ");
-            sb.append("phoneNumber=").append(phoneNumber);
-            sb.append(", ");
-            sb.append("defineAddress=").append(defineAddress);
-            sb.append("]");
-
-            return sb.toString();
+        if (obj == null) {
+            return false;
         }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Address other = (Address) obj;
+
+        if (addressId == null) {
+            if (other.addressId != null) {
+                return false;
+            }
+        } else if (!addressId.equals(other.addressId)) {
+            return false;
+        }
+
+        return true;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Address [");
+        sb.append("addressId=").append(addressId);
+        sb.append(", ");
+        sb.append("provinceId=").append(provinceId);
+        sb.append(", ");
+        sb.append("province=").append(province);
+        sb.append(", ");
+        sb.append("cityId=").append(cityId);
+        sb.append(", ");
+        sb.append("city=").append(city);
+        sb.append(", ");
+        sb.append("areaId=").append(areaId);
+        sb.append(", ");
+        sb.append("area=").append(area);
+        sb.append(", ");
+        sb.append("communityId=").append(communityId);
+        sb.append(", ");
+        sb.append("communityName=").append(communityName);
+        sb.append(", ");
+        sb.append("buildId=").append(buildId);
+        sb.append(", ");
+        sb.append("userId=").append(userId);
+        sb.append(", ");
+        sb.append("isDefault=").append(isDefault);
+        sb.append(", ");
+        sb.append("phoneNumber=").append(phoneNumber);
+        sb.append(", ");
+        sb.append("defineAddress=").append(defineAddress);
+        sb.append("]");
+
+        return sb.toString();
+    }
+}

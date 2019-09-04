@@ -19,7 +19,7 @@ public class HomeServiceController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResultEntity insertHomeService(@RequestBody HomeServiceModel homeServiceModel) {
         int insertCount = homeService.insertHomeService(homeServiceModel);
-        homeServiceModel.setPublishTime(DateUtils.INSTANCE.getCurrentTime());
+        homeServiceModel.setPublishTime(DateUtils.getCurrentTime());
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
         } else {

@@ -10,6 +10,7 @@ import com.gy.life.model.request.GoodCreateOrderParams;
 import com.gy.life.service.impl.ReserveGoodServiceImpl;
 import com.gy.life.service.impl.OrderServiceImpl;
 import com.gy.life.utils.DateUtils;
+import com.gy.life.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +31,13 @@ public class OrderController {
     public ResultEntity insertOrder(@RequestBody CartParams cartParams) {
         ProductOrder productOrder = new ProductOrder();
         productOrder.setLeaveMessage(cartParams.getLeaveMessage());
-        productOrder.setOrderStatus(0);
-        productOrder.setOrderTime(DateUtils.INSTANCE.getCurrentTime());
+        productOrder.setOrderNumber(StringUtils.getOrderNo());
+        productOrder.setOrderTime(DateUtils.getCurrentTime());
         productOrder.setTotalPrice(cartParams.getTotalPrice());
         productOrder.setUserId(cartParams.getUserId());
+        productOrder.setOrderStatus(0);
         int productOrderId = orderService.insertOrder(productOrder);
-        int insertCount = orderService.insertProductOrderItem(cartParams.getCartList(), productOrderId);
+        int insertCount = orderService.insertProductOrderItem(cartParams.getCartList(), productOrder.getOrderId());
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
         } else {
@@ -53,9 +55,10 @@ public class OrderController {
         ProductOrder productOrder = new ProductOrder();
         productOrder.setLeaveMessage(goodCreateOrderParams.getLeaveMessage());
         productOrder.setOrderStatus(0);
-        productOrder.setOrderTime(DateUtils.INSTANCE.getCurrentTime());
+        productOrder.setOrderTime(DateUtils.getCurrentTime());
         productOrder.setTotalPrice(goodCreateOrderParams.getTotalPrice());
         productOrder.setUserId(goodCreateOrderParams.getUserId());
+        productOrder.setOrderNumber(StringUtils.getOrderNo());
         int productOrderId = orderService.insertOrder(productOrder);
         int insertCount = orderService.insertProductOrderItem(goodCreateOrderParams.getBuyCount(), goodCreateOrderParams.getProductId(), productOrderId);
         if (insertCount > 0) {
@@ -73,7 +76,6 @@ public class OrderController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResultEntity loadOrderList(int userId, int orderStatus) {
         List<ProductOrderDetail> productOrderDetails = orderService.selectOrderProductList(userId, orderStatus);
-        System.out.println("ddddd"+productOrderDetails.toString());
         return ResultEntity.getSuccessResult(productOrderDetails);
     }
 
