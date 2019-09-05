@@ -4,15 +4,18 @@ import com.gy.life.model.ProductDetail;
 
 import java.util.List;
 
-public interface ReserveService {
+public interface ProductService {
 
-    int insertServeGood(ProductDetail productDetail);
+    int insertProductGood(ProductDetail productDetail);
 
     List<ProductDetail> selectList();
+
+    List<ProductDetail> selectListByProductId(List<Integer> productIdList);
 
     int deleteReserve(int reserveId);
 
     int updateReserve(ProductDetail productDetailModel);
 
-    ProductDetail selectByReserveId(int reserveId);
+    ProductDetail selectByProductId(int productId);
+
 }

@@ -10,6 +10,7 @@ import com.gy.life.mapper.ProductOrderMapper;
 import com.gy.life.model.OrderProductItem;
 import com.gy.life.model.ProductOrder;
 import com.gy.life.model.order.ProductOrderDetail;
+import com.gy.life.model.request.GoodCreateOrderParams;
 import com.gy.life.model.request.OrderRequest;
 import com.gy.life.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,17 +78,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public int insertProductOrderItem(int buyCount, int productId, int orderId) {
-        OrderProductItem orderProductItem = new OrderProductItem();
-        orderProductItem.setBuyCount(buyCount);
-        orderProductItem.setOrderId(orderId);
-        orderProductItem.setProductId(productId);
-        int insetCount = orderProductItemMapper.save(orderProductItem);
+    public int insertProductOrderItemByList(List<GoodCreateOrderParams.BuyProductInform> productIdList, int orderId) {
+        List<OrderProductItem> orderProductItemList = new ArrayList<>();
+        for (int i = 0; i < productIdList.size(); i++) {
+            OrderProductItem orderProductItem = new OrderProductItem();
+            orderProductItem.setBuyCount(productIdList.get(i).getBuyCount());
+            orderProductItem.setOrderId(orderId);
+            orderProductItem.setProductId(productIdList.get(i).getProductId());
+            orderProductItemList.add(orderProductItem);
+        }
+        int insetCount = orderProductItemMapper.saveMulti(orderProductItemList);
         return insetCount;
     }
 
     @Override
     public List<ProductOrderDetail> selectOrderProductList(int userId, int orderStatus) {
-        return productOrderMapper.selectOrderProductList(orderStatus,userId);
+        return productOrderMapper.selectOrderProductList(orderStatus, userId);
     }
 }
