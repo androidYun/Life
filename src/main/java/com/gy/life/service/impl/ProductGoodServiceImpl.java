@@ -1,23 +1,24 @@
 package com.gy.life.service.impl;
 
+import com.gitee.fastmybatis.core.query.Query;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.gy.life.mapper.ReserveGoodMapper;
 import com.gy.life.model.ProductDetail;
-import com.gy.life.service.ReserveService;
+import com.gy.life.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class ReserveGoodServiceImpl implements ReserveService {
+public class ProductGoodServiceImpl implements ProductService {
     @Autowired
     ReserveGoodMapper reserveGoodMapper;
 
     @Override
-    public int insertServeGood(ProductDetail productDetail) {
-        return reserveGoodMapper.insert(productDetail);
+    public int insertProductGood(ProductDetail productDetail) {
+        return reserveGoodMapper.save(productDetail);
     }
 
     @Override
@@ -33,11 +34,16 @@ public class ReserveGoodServiceImpl implements ReserveService {
 
     @Override
     public int updateReserve(ProductDetail productDetailModel) {
-        return reserveGoodMapper.updateByPrimaryKey(productDetailModel);
+        return reserveGoodMapper.update(productDetailModel);
     }
 
     @Override
-    public ProductDetail selectByReserveId(int reserveId) {
-        return reserveGoodMapper.selectByPrimaryKey(reserveId);
+    public ProductDetail selectByProductId(int productId) {
+        return reserveGoodMapper.getByColumn("product_id",productId);
+    }
+
+    @Override
+    public List<ProductDetail> selectListByProductId(List<Integer> productIdList) {
+        return reserveGoodMapper.selectListByProductId(productIdList);
     }
 }

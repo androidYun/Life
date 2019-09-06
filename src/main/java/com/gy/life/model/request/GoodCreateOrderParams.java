@@ -1,13 +1,41 @@
 package com.gy.life.model.request;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class GoodCreateOrderParams {
-   private int userId;
-    private  int productId;
-    private  int buyCount;
-    private  String leaveMessage;
+    private int userId;
+    private List<BuyProductInform> productIdList;
+    private String leaveMessage;
+
     BigDecimal totalPrice;
+
+    public static class BuyProductInform {
+
+        public BuyProductInform() {
+        }
+
+
+        private int productId;
+
+        private int buyCount;
+
+        public int getProductId() {
+            return productId;
+        }
+
+        public void setProductId(int productId) {
+            this.productId = productId;
+        }
+
+        public int getBuyCount() {
+            return buyCount;
+        }
+
+        public void setBuyCount(int buyCount) {
+            this.buyCount = buyCount;
+        }
+    }
 
     public int getUserId() {
         return userId;
@@ -17,20 +45,12 @@ public class GoodCreateOrderParams {
         this.userId = userId;
     }
 
-    public int getProductId() {
-        return productId;
+    public List<BuyProductInform> getProductIdList() {
+        return productIdList;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public int getBuyCount() {
-        return buyCount;
-    }
-
-    public void setBuyCount(int buyCount) {
-        this.buyCount = buyCount;
+    public void setProductIdList(List<BuyProductInform> productIdList) {
+        this.productIdList = productIdList;
     }
 
     public String getLeaveMessage() {

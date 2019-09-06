@@ -27,6 +27,10 @@ public class ProductDetail {
     /**  数据库字段：category_id */
     private Integer categoryId;
 
+
+    /**  数据库字段：category_name */
+    private String categoryName;
+
     /**  数据库字段：image_url */
     private String imageUrl;
 
@@ -93,6 +97,14 @@ public class ProductDetail {
     /**  数据库字段：product_detail.category_id */
     public Integer getCategoryId() {
         return this.categoryId;
+    }
+    /**  数据库字段：product_detail.category_name */
+    public String getCategoryName() {
+        return categoryName;
+    }
+    /**  数据库字段：product_detail.category_name */
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     /**  数据库字段：product_detail.image_url */

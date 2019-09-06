@@ -1,46 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gy.life.mapper.ReserveGoodMapper">
-  <resultMap id="BaseResultMap" type="com.gy.life.model.ProductDetail">
-    <id column="product_id" jdbcType="INTEGER" property="productId" />
-    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
-    <result column="product_name" jdbcType="VARCHAR" property="productName" />
-    <result column="product_desc" jdbcType="VARCHAR" property="productDesc" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="max_count" jdbcType="INTEGER" property="maxCount" />
-    <result column="unit" jdbcType="VARCHAR" property="unit" />
-    <result column="product_finish_time" jdbcType="TIMESTAMP" property="productFinishTime" />
-    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
-    <result column="pick_address" jdbcType="VARCHAR" property="pickAddress" />
-    <result column="delivery_type" jdbcType="INTEGER" property="deliveryType" />
-    <result column="attention" jdbcType="VARCHAR" property="attention" />
-    <result column="delivery_money" jdbcType="DECIMAL" property="deliveryMoney" />
-    <result column="sell_out_count" jdbcType="INTEGER" property="sellOutCount" />
-    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
-    <result column="market_price" jdbcType="DECIMAL" property="marketPrice" />
-    <result column="publish_phone" jdbcType="VARCHAR" property="publishPhone" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <resultMap id="BaseResultMap" type="com.gy.life.model.ProductDetail">
+        <id column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
+        <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
+        <result column="product_name" jdbcType="VARCHAR" property="productName"/>
+        <result column="product_desc" jdbcType="VARCHAR" property="productDesc"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="max_count" jdbcType="INTEGER" property="maxCount"/>
+        <result column="unit" jdbcType="VARCHAR" property="unit"/>
+        <result column="product_finish_time" jdbcType="TIMESTAMP" property="productFinishTime"/>
+        <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime"/>
+        <result column="pick_address" jdbcType="VARCHAR" property="pickAddress"/>
+        <result column="delivery_type" jdbcType="INTEGER" property="deliveryType"/>
+        <result column="attention" jdbcType="VARCHAR" property="attention"/>
+        <result column="delivery_money" jdbcType="DECIMAL" property="deliveryMoney"/>
+        <result column="sell_out_count" jdbcType="INTEGER" property="sellOutCount"/>
+        <result column="product_price" jdbcType="DECIMAL" property="productPrice"/>
+        <result column="market_price" jdbcType="DECIMAL" property="marketPrice"/>
+        <result column="publish_phone" jdbcType="VARCHAR" property="publishPhone"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from product_detail
     where product_id = #{productId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.gy.life.model.ProductDetail">
-    insert into product_detail (product_id, image_url, product_name,
+    <insert id="insert" parameterType="com.gy.life.model.ProductDetail">
+    insert into product_detail (product_id, category_id,category_name,image_url, product_name,
       product_desc, create_time, max_count,
       unit, product_finish_time, delivery_time,
       pick_address, delivery_type, attention, 
-      delivery_money, sell_out_count, good_price, 
+      delivery_money, sell_out_count, product_price,
       market_price, publish_phone)
-    values (#{productId,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR},
+    values (#{productId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER},#{categoryName,jdbcType=VARCHAR},#{imageUrl,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR},
       #{productDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{maxCount,jdbcType=INTEGER},
       #{unit,jdbcType=VARCHAR}, #{productFinishTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP},
       #{pickAddress,jdbcType=VARCHAR}, #{deliveryType,jdbcType=INTEGER}, #{attention,jdbcType=VARCHAR}, 
       #{deliveryMoney,jdbcType=DECIMAL}, #{sellOutCount,jdbcType=INTEGER}, #{productPrice,jdbcType=DECIMAL},
       #{marketPrice,jdbcType=DECIMAL}, #{publishPhone,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ProductDetail">
+    <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ProductDetail">
     update product_detail
-    set image_url = #{imageUrl,jdbcType=VARCHAR},
+    set  category_id = #{categoryId,jdbcType=INTEGER},
+      category_name = #{categoryId,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
       product_name = #{productName,jdbcType=VARCHAR},
       product_desc = #{productDesc,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -53,22 +57,32 @@
       attention = #{attention,jdbcType=VARCHAR},
       delivery_money = #{deliveryMoney,jdbcType=DECIMAL},
       sell_out_count = #{sellOutCount,jdbcType=INTEGER},
-      good_price = #{productPrice,jdbcType=DECIMAL},
+      product_price = #{productPrice,jdbcType=DECIMAL},
       market_price = #{marketPrice,jdbcType=DECIMAL},
       publish_phone = #{publishPhone,jdbcType=VARCHAR}
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select product_id, image_url, product_name, product_desc, create_time, max_count, unit,
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select product_id, category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit,
     product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money,
     sell_out_count, product_price, market_price, publish_phone
     from product_detail
     where product_id = #{productId,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select product_id, image_url, product_name, product_desc, create_time, max_count, unit,
+    <select id="selectAll" resultMap="BaseResultMap">
+    select product_id, category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit,
     product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money,
     sell_out_count, product_price, market_price, publish_phone
     from product_detail
   </select>
-  </mapper>
+
+    <select id="selectListByProductId" parameterType="java.util.List" resultMap="BaseResultMap">
+        select product_id,category_id,category_name, image_url, product_name, product_desc, create_time, max_count, unit,
+        product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money,
+        sell_out_count, product_price, market_price, publish_phone
+        from product_detail where product_id in
+        <foreach item="item" collection="productIdList" separator="," open="(" close=")">
+            #{item, jdbcType=INTEGER}
+        </foreach>
+    </select>
+</mapper>

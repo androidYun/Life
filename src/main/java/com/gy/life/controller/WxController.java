@@ -48,18 +48,17 @@ public class WxController {
         String openid = jsonObject.getString("openid");
         String session_key = jsonObject.getString("session_key");
         UserInform selectUserInform = userInformService.selectUserByOpenId(openid);
-
+        System.out.println("日志" + openid);
         if (selectUserInform == null) {
             UserInform userInform = new UserInform();
             userInform.setOpenId(openid);
             int userId = userInformService.insertUserInform(userInform);
-//            String token = jwtTokenUtils.createToken(userId + "");
-//            userInform.setToken(token);
+            String token = jwtTokenUtils.createToken(userId + "");
+            userInform.setToken(token);
             return ResultEntity.getSuccessResult(userInform);
         } else {
-            System.out.println("ddd"+selectUserInform.getUserId());
-//            String token = jwtTokenUtils.createToken(selectUserInform.getUserId() + "");
-//            selectUserInform.setToken(token);
+            String token = jwtTokenUtils.createToken(selectUserInform.getUserId() + "");
+            selectUserInform.setToken(token);
             return ResultEntity.getSuccessResult(selectUserInform);
         }
     }

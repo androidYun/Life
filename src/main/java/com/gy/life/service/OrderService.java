@@ -4,6 +4,7 @@ import com.gy.life.common.PageEntity;
 import com.gy.life.model.ProductOrder;
 import com.gy.life.model.ReserveOrderDetail;
 import com.gy.life.model.order.ProductOrderDetail;
+import com.gy.life.model.request.GoodCreateOrderParams;
 import com.gy.life.model.request.OrderRequest;
 
 import java.util.List;
@@ -11,7 +12,13 @@ import java.util.List;
 public interface OrderService {
     int insertOrder(ProductOrder productOrder);
 
-    ProductOrder selectByUserIdAndReserveId(int userId, int reserveId);
+    ProductOrder selectByUserIdAndReserveId(int userId, int productId);
+
+
+    int updateOrder(ProductOrder productOrder);
+
+
+    ProductOrder selectById(int orderId);
 
     List<ProductOrderDetail> selectOrderProductList(int userId, int orderStatus);
 
@@ -19,5 +26,5 @@ public interface OrderService {
 
     int insertProductOrderItem(List<OrderRequest> orderRequest, int orderId);
 
-    int insertProductOrderItem(int buyCount, int productId, int orderId);
+    int insertProductOrderItemByList(List<GoodCreateOrderParams.BuyProductInform> productInformList, int orderId);
 }
