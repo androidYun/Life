@@ -31,6 +31,8 @@ public class ProductOrderDetail {
      */
     private Integer orderStatus;
 
+    private String orderNumber;
+
     /**
      * 留言, 数据库字段：leave_message
      */
@@ -44,6 +46,15 @@ public class ProductOrderDetail {
 
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     public Date getOrderTime() {

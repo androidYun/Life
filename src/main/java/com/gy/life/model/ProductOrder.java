@@ -24,6 +24,9 @@ public class ProductOrder {
     /** 预定订单Id, 数据库字段：order_id */
     private Integer orderId;
 
+    /** 订单编号Id, 数据库字段：order_number */
+    private String orderNumber;
+
     /**  数据库字段：order_time */
     private Date orderTime;
 
@@ -38,6 +41,14 @@ public class ProductOrder {
 
     /** 留言, 数据库字段：leave_message */
     private String leaveMessage;
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
 
     /** 设置预定订单Id, 数据库字段：product_order.order_id */
     public void setOrderId(Integer orderId) {

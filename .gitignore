@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -12,3 +13,8 @@ target/
 .idea/
 .mvn/
 LiftApplicationTests.java
+=======
+.mvn
+target
+workspace.xml
+

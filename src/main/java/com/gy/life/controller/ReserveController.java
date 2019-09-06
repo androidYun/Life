@@ -23,8 +23,13 @@ public class ReserveController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     private ResultEntity insertReserve(@RequestBody ProductDetail productDetailModel) {
         productDetailModel.setSellOutCount(0);
+<<<<<<< HEAD
         productDetailModel.setCreateTime(DateUtils.INSTANCE.getCurrentTime());
         int insertCount = reserveGoodService.insertProductGood(productDetailModel);
+=======
+        productDetailModel.setCreateTime(DateUtils.getCurrentTime());
+        int insertCount = reserveGoodService.insertServeGood(productDetailModel);
+>>>>>>> 05653f8db55a17c0eff50ec9f8b711f8c8da2641
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
         } else {

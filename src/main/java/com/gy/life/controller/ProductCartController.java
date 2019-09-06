@@ -31,7 +31,7 @@ public class ProductCartController {
             cartService.updateCart(selectProduct);
             return ResultEntity.getSuccessResult("添加成功");
         }
-        productCart.setCartTime(DateUtils.INSTANCE.getCurrentTime());
+        productCart.setCartTime(DateUtils.getCurrentTime());
         int insertCartCount = cartService.insertCart(productCart);
         if (insertCartCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
