@@ -1,4 +1,5 @@
 .idea/
+.idea
 .mvn
 target
 workspace.xml
