@@ -42,6 +42,9 @@ public class ProductOrder {
     /** 留言, 数据库字段：leave_message */
     private String leaveMessage;
 
+    /** 地址：address_id */
+    private String addressId;
+
     public String getOrderNumber() {
         return orderNumber;
     }
@@ -108,6 +111,14 @@ public class ProductOrder {
     /** 获取留言, 数据库字段：product_order.leave_message */
     public String getLeaveMessage() {
         return this.leaveMessage;
+    }
+
+    public String getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 
     @Override

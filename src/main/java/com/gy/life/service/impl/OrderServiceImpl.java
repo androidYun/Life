@@ -10,15 +10,16 @@ import com.gy.life.mapper.ProductOrderMapper;
 import com.gy.life.model.OrderProductItem;
 import com.gy.life.model.ProductOrder;
 import com.gy.life.model.order.ProductOrderDetail;
+import com.gy.life.model.order.ProductOrderUserDetail;
 import com.gy.life.model.request.GoodCreateOrderParams;
 import com.gy.life.model.request.OrderRequest;
 import com.gy.life.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -105,4 +106,11 @@ public class OrderServiceImpl implements OrderService {
     public int updateOrder(ProductOrder productOrder) {
         return productOrderMapper.update(productOrder);
     }
+
+    @Override
+    public List<ProductOrderUserDetail> selectAllOrderList(int orderStatus, Date startTime, Date endTime) {
+        return productOrderMapper.selectAllOrderListDetail(orderStatus, startTime, endTime);
+    }
+
+
 }

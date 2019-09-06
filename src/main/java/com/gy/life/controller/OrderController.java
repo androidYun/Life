@@ -6,6 +6,7 @@ import com.gy.life.enumeration.OrderStateEnum;
 import com.gy.life.model.ProductOrder;
 import com.gy.life.model.ProductDetail;
 import com.gy.life.model.order.ProductOrderDetail;
+import com.gy.life.model.order.ProductOrderUserDetail;
 import com.gy.life.model.request.CartParams;
 import com.gy.life.model.request.GoodCreateOrderParams;
 import com.gy.life.service.impl.ProductGoodServiceImpl;
@@ -15,8 +16,8 @@ import com.gy.life.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -85,6 +86,14 @@ public class OrderController {
         return ResultEntity.getSuccessResult(productOrderDetails);
     }
 
+    @RequestMapping(value = "/allList", method = RequestMethod.GET)
+    public ResultEntity loadAllOrder(@RequestParam("orderStatus") int orderStatus, @RequestParam(value = "startTime", required = false) Date startTime,
+                                     @RequestParam(value = "endTime", required = false) Date endTime) {
+
+        List<ProductOrderUserDetail> productOrderUserDetails = orderService.selectAllOrderList(orderStatus, startTime, endTime);
+        return ResultEntity.getSuccessResult(productOrderUserDetails);
+    }
+
     @RequestMapping(value = "/cancel", method = RequestMethod.GET)
     public ResultEntity cancelOrder(int orderId) {
         ProductOrder productOrder = orderService.selectById(orderId);
@@ -114,6 +123,7 @@ public class OrderController {
             return ResultEntity.getErrorResult("取消订单失败");
         }
     }
+
     @RequestMapping(value = "/confirm", method = RequestMethod.GET)
     public ResultEntity confirmOrder(int orderId) {
         ProductOrder productOrder = orderService.selectById(orderId);

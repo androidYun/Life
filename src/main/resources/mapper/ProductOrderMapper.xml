@@ -87,5 +87,53 @@
         </if>
     </select>
 
+    <resultMap id="OrderProductUserDetail" type="com.gy.life.model.order.ProductOrderUserDetail">
+        <association property="productOrder" javaType="com.gy.life.model.ProductOrder">
+            <id column="order_id" jdbcType="INTEGER" property="orderId"/>
+            <id column="address_id" jdbcType="INTEGER" property="addressId"/>
+            <id column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
+            <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
+            <result column="user_id" jdbcType="INTEGER" property="userId"/>
+            <result column="total_price" jdbcType="DECIMAL" property="totalPrice"/>
+            <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>
+            <result column="leave_message" jdbcType="VARCHAR" property="leaveMessage"/>
+        </association>
+        <association property="productDetail" javaType="com.gy.life.model.ProductDetail">
+            <id column="product_id" jdbcType="INTEGER" property="productId"/>
+            <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+            <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
+            <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
+            <result column="product_name" jdbcType="VARCHAR" property="productName"/>
+            <result column="product_desc" jdbcType="VARCHAR" property="productDesc"/>
+            <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+            <result column="max_count" jdbcType="INTEGER" property="maxCount"/>
+            <result column="unit" jdbcType="VARCHAR" property="unit"/>
+            <result column="product_finish_time" jdbcType="TIMESTAMP" property="productFinishTime"/>
+            <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime"/>
+            <result column="pick_address" jdbcType="VARCHAR" property="pickAddress"/>
+            <result column="delivery_type" jdbcType="INTEGER" property="deliveryType"/>
+            <result column="attention" jdbcType="VARCHAR" property="attention"/>
+            <result column="delivery_money" jdbcType="DECIMAL" property="deliveryMoney"/>
+            <result column="sell_out_count" jdbcType="INTEGER" property="sellOutCount"/>
+            <result column="product_price" jdbcType="DECIMAL" property="productPrice"/>
+            <result column="market_price" jdbcType="DECIMAL" property="marketPrice"/>
+            <result column="publish_phone" jdbcType="VARCHAR" property="publishPhone"/>
+        </association>
+        <association property="address" javaType="com.gy.life.model.Address">
+            <id column="address_id" jdbcType="INTEGER" property="addressId"/>
+            <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+            <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+        </association>
+    </resultMap>
+    <select id="selectAllOrderListDetail" resultMap="OrderProductUserDetail">
+        SELECT po.*,pd.* ,address.* from product_order po LEFT JOIN order_product_item opi ON po.order_id= opi.order_id
+        LEFT JOIN product_detail pd on opi.product_id and pd.product_id
+        LEFT JOIN address address on po.address_id and address.address_id
+        where po.order_status=#{orderStatus,jdbcType=INTEGER} group by po.order_id
+
+        <if test="startTime!= null">AND po.order_time <![CDATA[>=]]> #{startTime,jdbcType=TIMESTAMP}</if>
+        <if test="endTime!= null">AND po.order_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}</if>
+    </select>
+
 
 </mapper>
