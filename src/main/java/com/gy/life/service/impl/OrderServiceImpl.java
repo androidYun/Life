@@ -95,4 +95,14 @@ public class OrderServiceImpl implements OrderService {
     public List<ProductOrderDetail> selectOrderProductList(int userId, int orderStatus) {
         return productOrderMapper.selectOrderProductList(orderStatus, userId);
     }
+
+    @Override
+    public ProductOrder selectById(int orderId) {
+        return productOrderMapper.getById(orderId);
+    }
+
+    @Override
+    public int updateOrder(ProductOrder productOrder) {
+        return productOrderMapper.update(productOrder);
+    }
 }

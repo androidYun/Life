@@ -10,7 +10,12 @@ public class GoodCreateOrderParams {
 
     BigDecimal totalPrice;
 
-    public class BuyProductInform {
+    public static class BuyProductInform {
+
+        public BuyProductInform() {
+        }
+
+
         private int productId;
 
         private int buyCount;

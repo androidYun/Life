@@ -12,7 +12,13 @@ import java.util.List;
 public interface OrderService {
     int insertOrder(ProductOrder productOrder);
 
-    ProductOrder selectByUserIdAndReserveId(int userId, int reserveId);
+    ProductOrder selectByUserIdAndReserveId(int userId, int productId);
+
+
+    int updateOrder(ProductOrder productOrder);
+
+
+    ProductOrder selectById(int orderId);
 
     List<ProductOrderDetail> selectOrderProductList(int userId, int orderStatus);
 

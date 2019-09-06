@@ -1,5 +1,6 @@
 package com.gy.life.service.impl;
 
+import com.gitee.fastmybatis.core.query.Query;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.gy.life.mapper.ReserveGoodMapper;
@@ -17,7 +18,7 @@ public class ProductGoodServiceImpl implements ProductService {
 
     @Override
     public int insertProductGood(ProductDetail productDetail) {
-        return reserveGoodMapper.insert(productDetail);
+        return reserveGoodMapper.save(productDetail);
     }
 
     @Override
@@ -33,12 +34,12 @@ public class ProductGoodServiceImpl implements ProductService {
 
     @Override
     public int updateReserve(ProductDetail productDetailModel) {
-        return reserveGoodMapper.updateByPrimaryKey(productDetailModel);
+        return reserveGoodMapper.update(productDetailModel);
     }
 
     @Override
     public ProductDetail selectByProductId(int productId) {
-        return reserveGoodMapper.selectByPrimaryKey(productId);
+        return reserveGoodMapper.getByColumn("product_id",productId);
     }
 
     @Override

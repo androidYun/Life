@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.model.ProductDetail;
 import com.gy.life.model.request.ProductListRequest;
+import com.gy.life.service.impl.CategoryServiceImpl;
 import com.gy.life.service.impl.ProductGoodServiceImpl;
 import com.gy.life.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,23 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/reserve")
-public class ReserveController {
+@RequestMapping(value = "/product")
+public class ProductController {
 
 
     @Autowired
     ProductGoodServiceImpl reserveGoodService;
 
+    @Autowired
+    CategoryServiceImpl categoryService;
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     private ResultEntity insertReserve(@RequestBody ProductDetail productDetailModel) {
         productDetailModel.setSellOutCount(0);
-<<<<<<< HEAD
-        productDetailModel.setCreateTime(DateUtils.INSTANCE.getCurrentTime());
-        int insertCount = reserveGoodService.insertProductGood(productDetailModel);
-=======
         productDetailModel.setCreateTime(DateUtils.getCurrentTime());
-        int insertCount = reserveGoodService.insertServeGood(productDetailModel);
->>>>>>> 05653f8db55a17c0eff50ec9f8b711f8c8da2641
+        int insertCount = reserveGoodService.insertProductGood(productDetailModel);
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("添加成功");
         } else {
@@ -53,8 +52,13 @@ public class ReserveController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResultEntity loadReserveList() {
-        return ResultEntity.getSuccessResult(reserveGoodService.selectList());
+    public ResultEntity loadProduct(@RequestParam(value = "categoryId", required = false) Integer categoryId) {
+        System.out.println("日志" + categoryId);
+        if (categoryId == null) {
+            return ResultEntity.getSuccessResult(reserveGoodService.selectList());
+        } else {
+            return ResultEntity.getSuccessResult(categoryService.selectProductListByCategoryId(categoryId));
+        }
     }
 
     @RequestMapping(value = "/productList", method = RequestMethod.POST)

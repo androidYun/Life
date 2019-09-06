@@ -1,11 +1,13 @@
 package com.gy.life.mapper;
 
+import com.gitee.fastmybatis.core.mapper.CrudMapper;
+import com.gy.life.model.Community;
 import com.gy.life.model.ProductDetail;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface ReserveGoodMapper {
+public interface ReserveGoodMapper extends CrudMapper<ProductDetail, Integer> {
     int deleteByPrimaryKey(Integer reserveId);
 
     int insert(ProductDetail record);
