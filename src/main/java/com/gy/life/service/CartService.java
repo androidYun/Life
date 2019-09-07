@@ -7,17 +7,21 @@ import java.util.List;
 
 public interface CartService {
 
-    int insertCart(ProductCart productCart);
+    Integer insertCart(ProductCart productCart);
 
-    ProductCart selectByCart(int cartId);
+    ProductCart selectByCart(Integer cartId);
 
-    ProductCart selectByUserId(int userId, int productId);
+    ProductCart selectByUserId(Integer userId, Integer productId);
 
-    List<ProductCartDetail> selectAllList(int userId);
+    List<ProductCartDetail> selectAllList(Integer userId);
 
     List<ProductCartDetail> selectCartGoodList(List<Integer> cartListId);
 
-    int updateCart(ProductCart productCart);
+    Integer updateCart(ProductCart productCart);
 
-    int deleteCart(int cartId);
+    Integer deleteCart(Integer cartId);
+
+    Integer calculateCartTotalCount(Integer userId);
+
+
 }

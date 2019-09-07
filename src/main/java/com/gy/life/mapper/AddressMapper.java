@@ -26,4 +26,7 @@ public interface AddressMapper extends CrudMapper<Address, Integer> {
     @Update("update address set is_default=0 where is_default=1 and user_id=#{userId}")
     int setDefaultToIsNot(@Param("userId") int userId);
 
+    @Update("update address set is_default=0")
+    int updateAllNotDefault();
+
 }

@@ -10,6 +10,8 @@ public class GoodCreateOrderParams {
 
     BigDecimal totalPrice;
 
+    private int addressId;
+
     public static class BuyProductInform {
 
         public BuyProductInform() {
@@ -19,6 +21,8 @@ public class GoodCreateOrderParams {
         private int productId;
 
         private int buyCount;
+
+        private BigDecimal productPrice;
 
         public int getProductId() {
             return productId;
@@ -34,6 +38,14 @@ public class GoodCreateOrderParams {
 
         public void setBuyCount(int buyCount) {
             this.buyCount = buyCount;
+        }
+
+        public BigDecimal getProductPrice() {
+            return productPrice;
+        }
+
+        public void setProductPrice(BigDecimal productPrice) {
+            this.productPrice = productPrice;
         }
     }
 
@@ -67,5 +79,13 @@ public class GoodCreateOrderParams {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 }

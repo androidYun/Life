@@ -12,11 +12,13 @@ public interface AddressService {
 
     int deleteAddress(int addressId);
 
+    int updateAllNotDefault();
+
     Address selectByAddressId(int addressId);
 
     Address selectDefaultAddress(int userId);
 
     int updateAddress(Address address);
 
-    int updateDefaultAddress(int addressId,int userId);
+    int updateDefaultAddress(int addressId, int userId);
 }

@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.gy.life.common.PageEntity;
 import com.gy.life.mapper.OrderProductItemMapper;
 import com.gy.life.mapper.ProductCartMapper;
+import com.gy.life.mapper.ProductDetailMapper;
 import com.gy.life.mapper.ProductOrderMapper;
 import com.gy.life.model.OrderProductItem;
 import com.gy.life.model.ProductOrder;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +35,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     ProductCartMapper productCartMapper;
+
+    @Autowired
+    ProductDetailMapper productDetailMapper;
 
     @Override
     public int insertOrder(ProductOrder productOrder) {
@@ -67,11 +72,14 @@ public class OrderServiceImpl implements OrderService {
         for (OrderRequest orderRequest : orderRequestList) {
             OrderProductItem orderProductItem = new OrderProductItem();
             orderProductItem.setBuyCount(orderRequest.getBuyCount());
+
+            orderProductItem.setSingleTotalPrice(new BigDecimal(orderRequest.getBuyCount()).multiply(orderRequest.getProductPrice()));
             orderProductItem.setOrderId(orderId);
             orderProductItem.setProductId(orderRequest.getProductId());
             orderProductItemList.add(orderProductItem);
             //删除购物车
-            int deleteById = productCartMapper.deleteById(orderRequest.getCartId());
+            productCartMapper.deleteById(orderRequest.getCartId());
+            productDetailMapper.updateSellCount(orderRequest.getBuyCount(), orderRequest.getProductId());
         }
         int saveMulti = orderProductItemMapper.saveMulti(orderProductItemList);
 
@@ -85,8 +93,10 @@ public class OrderServiceImpl implements OrderService {
             OrderProductItem orderProductItem = new OrderProductItem();
             orderProductItem.setBuyCount(productIdList.get(i).getBuyCount());
             orderProductItem.setOrderId(orderId);
+            orderProductItem.setSingleTotalPrice(new BigDecimal(productIdList.get(i).getBuyCount()).multiply(productIdList.get(i).getProductPrice()));
             orderProductItem.setProductId(productIdList.get(i).getProductId());
             orderProductItemList.add(orderProductItem);
+            productDetailMapper.updateSellCount(productIdList.get(i).getBuyCount(), productIdList.get(i).getProductId());
         }
         int insetCount = orderProductItemMapper.saveMulti(orderProductItemList);
         return insetCount;

@@ -40,4 +40,5 @@ public class CategoryServiceImpl implements CategoryService {
     public List<ProductDetail> selectProductListByCategoryId(int categoryId) {
         return productCategoryMapper.selectProductDetailByCategoryId(categoryId);
     }
+
 }

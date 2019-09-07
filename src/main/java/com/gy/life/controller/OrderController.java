@@ -9,6 +9,7 @@ import com.gy.life.model.order.ProductOrderDetail;
 import com.gy.life.model.order.ProductOrderUserDetail;
 import com.gy.life.model.request.CartParams;
 import com.gy.life.model.request.GoodCreateOrderParams;
+import com.gy.life.model.request.OrderRequest;
 import com.gy.life.service.impl.ProductGoodServiceImpl;
 import com.gy.life.service.impl.OrderServiceImpl;
 import com.gy.life.utils.DateUtils;
@@ -16,6 +17,7 @@ import com.gy.life.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +39,9 @@ public class OrderController {
         productOrder.setOrderNumber(StringUtils.getOrderNo());
         productOrder.setOrderTime(DateUtils.getCurrentTime());
         productOrder.setTotalPrice(cartParams.getTotalPrice());
+        productOrder.setTotalCount(calculateCartTotalCount(cartParams.getCartList()));
         productOrder.setUserId(cartParams.getUserId());
+        productOrder.setAddressId(cartParams.getAddressId());
         productOrder.setOrderStatus(0);
         int productOrderId = orderService.insertOrder(productOrder);
         int insertCount = orderService.insertProductOrderItem(cartParams.getCartList(), productOrder.getOrderId());
@@ -64,6 +68,7 @@ public class OrderController {
         productOrder.setOrderStatus(0);
         productOrder.setOrderTime(DateUtils.getCurrentTime());
         productOrder.setTotalPrice(goodCreateOrderParams.getTotalPrice());
+        productOrder.setTotalCount(calculateTotalCount(goodCreateOrderParams.getProductIdList()));
         productOrder.setUserId(goodCreateOrderParams.getUserId());
         productOrder.setOrderNumber(StringUtils.getOrderNo());
         int productOrderId = orderService.insertOrder(productOrder);
@@ -138,4 +143,19 @@ public class OrderController {
         }
     }
 
+
+    private int calculateTotalCount(List<GoodCreateOrderParams.BuyProductInform> productIdList) {
+        int totalCount = 0;
+        for (GoodCreateOrderParams.BuyProductInform buyProductInform : productIdList) {
+            totalCount += buyProductInform.getBuyCount();
+        }
+        return totalCount;
+    }
+    private int calculateCartTotalCount( List<OrderRequest> cartList) {
+        int totalCount = 0;
+        for (OrderRequest orderRequest : cartList) {
+            totalCount += orderRequest.getBuyCount();
+        }
+        return totalCount;
+    }
 }

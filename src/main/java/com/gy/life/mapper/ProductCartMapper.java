@@ -22,4 +22,7 @@ public interface ProductCartMapper extends CrudMapper<ProductCart, Integer> {
     List<ProductCartDetail> selectCartDetails(int userId);
 
     List<ProductCartDetail> selectListByCartId(@Param("cardIdList") List<Integer> cartIdList);
+
+    @Select("select SUM(cart_count)  from product_cart  where user_id=#{userId}")
+    Integer calculateCartTotalCount(@Param("userId") int userId);
 }

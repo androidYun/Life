@@ -1,9 +1,8 @@
 package com.gy.life.service.impl;
 
-import com.gitee.fastmybatis.core.query.Query;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.gy.life.mapper.ReserveGoodMapper;
+import com.gy.life.mapper.ProductDetailMapper;
 import com.gy.life.model.ProductDetail;
 import com.gy.life.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,36 +13,36 @@ import java.util.List;
 @Component
 public class ProductGoodServiceImpl implements ProductService {
     @Autowired
-    ReserveGoodMapper reserveGoodMapper;
+    ProductDetailMapper productDetailMapper;
 
     @Override
     public int insertProductGood(ProductDetail productDetail) {
-        return reserveGoodMapper.save(productDetail);
+        return productDetailMapper.save(productDetail);
     }
 
     @Override
     public List<ProductDetail> selectList() {
         Page<Object> page = PageHelper.startPage(1, 20);
-        return reserveGoodMapper.selectAll();
+        return productDetailMapper.selectAll();
     }
 
     @Override
     public int deleteReserve(int reserveId) {
-        return reserveGoodMapper.deleteByPrimaryKey(reserveId);
+        return productDetailMapper.deleteByPrimaryKey(reserveId);
     }
 
     @Override
     public int updateReserve(ProductDetail productDetailModel) {
-        return reserveGoodMapper.update(productDetailModel);
+        return productDetailMapper.update(productDetailModel);
     }
 
     @Override
     public ProductDetail selectByProductId(int productId) {
-        return reserveGoodMapper.getByColumn("product_id",productId);
+        return productDetailMapper.getByColumn("product_id",productId);
     }
 
     @Override
     public List<ProductDetail> selectListByProductId(List<Integer> productIdList) {
-        return reserveGoodMapper.selectListByProductId(productIdList);
+        return productDetailMapper.selectListByProductId(productIdList);
     }
 }

@@ -53,7 +53,6 @@ public class ProductController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResultEntity loadProduct(@RequestParam(value = "categoryId", required = false) Integer categoryId) {
-        System.out.println("日志" + categoryId);
         if (categoryId == null) {
             return ResultEntity.getSuccessResult(reserveGoodService.selectList());
         } else {

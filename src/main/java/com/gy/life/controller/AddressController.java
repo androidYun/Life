@@ -4,6 +4,7 @@ import com.gy.life.common.ResultEntity;
 import com.gy.life.model.Address;
 import com.gy.life.service.impl.AddressServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +16,15 @@ public class AddressController {
     @Autowired
     AddressServiceImpl addressService;
 
+    @Transactional
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResultEntity insertAddress(@RequestBody Address address) {
         List<Address> addresses = addressService.selectAllList(address.getUserId());
         if (addresses.size() == 0) {
             address.setIsDefault(true);
+        }
+        if (address.getDefault()) {
+            addressService.updateAllNotDefault();
         }
         int insertCount = addressService.insertAddress(address);
         if (insertCount > 0) {
@@ -28,6 +33,7 @@ public class AddressController {
             return ResultEntity.getErrorResult("添加失败");
         }
     }
+
     @RequestMapping(value = "/default", method = RequestMethod.GET)
     public ResultEntity getDefaultAddress(int userId) {
         Address address = addressService.selectDefaultAddress(userId);

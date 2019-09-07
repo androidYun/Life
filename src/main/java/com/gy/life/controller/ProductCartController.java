@@ -90,4 +90,9 @@ public class ProductCartController {
         }
         return ResultEntity.getErrorResult("删除失败");
     }
+    @RequestMapping(value = "/count", method = RequestMethod.GET)
+    public ResultEntity calculateCartTotalCount(int userId) {
+        System.out.println("计算"+userId);
+        return ResultEntity.getSuccessResult(cartService.calculateCartTotalCount(userId));
+    }
 }

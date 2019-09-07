@@ -36,6 +36,9 @@ public class ProductOrder {
     /** 预期金额 , 数据库字段：total_price */
     private BigDecimal totalPrice;
 
+    /** 总数量 , 数据库字段：total_count */
+    private Integer totalCount;
+
     /** 订单类型 0新创建 1 派送中 2 结束, 数据库字段：order_status */
     private Integer orderStatus;
 
@@ -43,7 +46,7 @@ public class ProductOrder {
     private String leaveMessage;
 
     /** 地址：address_id */
-    private String addressId;
+    private int addressId;
 
     public String getOrderNumber() {
         return orderNumber;
@@ -113,12 +116,20 @@ public class ProductOrder {
         return this.leaveMessage;
     }
 
-    public String getAddressId() {
+    public int getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(String addressId) {
+    public void setAddressId(int addressId) {
         this.addressId = addressId;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
     }
 
     @Override

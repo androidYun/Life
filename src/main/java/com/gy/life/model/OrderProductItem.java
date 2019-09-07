@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 
 /**
@@ -28,6 +29,9 @@ public class OrderProductItem {
 
     /** 购买数量, 数据库字段：buy_count */
     private Integer buyCount;
+
+    /** 购买数量, 数据库字段：single_total_price */
+    private BigDecimal singleTotalPrice;
 
     /**  数据库字段：order_product_item.product_order_id */
     public void setProductOrderId(Integer productOrderId) {
@@ -67,6 +71,14 @@ public class OrderProductItem {
     /** 获取购买数量, 数据库字段：order_product_item.buy_count */
     public Integer getBuyCount() {
         return this.buyCount;
+    }
+
+    public BigDecimal getSingleTotalPrice() {
+        return singleTotalPrice;
+    }
+
+    public void setSingleTotalPrice(BigDecimal singleTotalPrice) {
+        this.singleTotalPrice = singleTotalPrice;
     }
 
     @Override

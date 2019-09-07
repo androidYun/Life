@@ -49,13 +49,15 @@
 
     <resultMap id="ReserveOrderDetailResultMap" type="com.gy.life.model.ReserveOrderDetail">
         <association property="productOrder" javaType="com.gy.life.model.ProductOrder">
-            <id column="reserve_order_id" jdbcType="INTEGER" property="reserveOrderId"/>
-            <result column="reserve_id" jdbcType="INTEGER" property="reserveId"/>
-            <result column="buy_count" jdbcType="INTEGER" property="buyCount"/>
-            <result column="buy_time" jdbcType="TIMESTAMP" property="buyTime"/>
+            <id column="order_id" jdbcType="INTEGER" property="orderId"/>
+            <id column="address_id" jdbcType="INTEGER" property="addressId"/>
+            <id column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
+            <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
             <result column="user_id" jdbcType="INTEGER" property="userId"/>
-            <result column="expect_amount" jdbcType="DECIMAL" property="expectAmount"/>
-            <result column="order_state" jdbcType="INTEGER" property="orderState"/>
+            <result column="total_price" jdbcType="DECIMAL" property="totalPrice"/>
+            <result column="total_count" jdbcType="INTEGER" property="totalCount"/>
+            <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>
+            <result column="leave_message" jdbcType="VARCHAR" property="leaveMessage"/>
         </association>
         <association property="productDetail" javaType="com.gy.life.model.ProductDetail">
             <id column="product_id" jdbcType="INTEGER" property="productId"/>
@@ -95,6 +97,7 @@
             <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
             <result column="user_id" jdbcType="INTEGER" property="userId"/>
             <result column="total_price" jdbcType="DECIMAL" property="totalPrice"/>
+            <result column="total_count" jdbcType="INTEGER" property="totalCount"/>
             <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>
             <result column="leave_message" jdbcType="VARCHAR" property="leaveMessage"/>
         </association>

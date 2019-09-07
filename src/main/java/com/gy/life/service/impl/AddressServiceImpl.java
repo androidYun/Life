@@ -52,4 +52,9 @@ public class AddressServiceImpl implements AddressService {
         int updateCount = addressMapper.updateDefaultAddress(addressId);
         return updateCount;
     }
+
+    @Override
+    public int updateAllNotDefault() {
+        return addressMapper.updateAllNotDefault();
+    }
 }
