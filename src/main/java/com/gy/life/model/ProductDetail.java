@@ -24,9 +24,11 @@ public class ProductDetail {
     /**  数据库字段：product_id */
     private Integer productId;
 
+    /**  数据库字段：merchant_id */
+    private Integer merchantId;
+
     /**  数据库字段：category_id */
     private Integer categoryId;
-
 
     /**  数据库字段：category_name */
     private String categoryName;
@@ -89,6 +91,16 @@ public class ProductDetail {
         return this.productId;
     }
 
+    /**  数据库字段：product_detail.merchant_id */
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    /**  数据库字段：product_detail.merchant_id */
+    public Integer getMerchantId() {
+        return this.merchantId;
+    }
+
     /**  数据库字段：product_detail.category_id */
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
@@ -98,13 +110,15 @@ public class ProductDetail {
     public Integer getCategoryId() {
         return this.categoryId;
     }
-    /**  数据库字段：product_detail.category_name */
-    public String getCategoryName() {
-        return categoryName;
-    }
+
     /**  数据库字段：product_detail.category_name */
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    /**  数据库字段：product_detail.category_name */
+    public String getCategoryName() {
+        return this.categoryName;
     }
 
     /**  数据库字段：product_detail.image_url */
@@ -310,7 +324,11 @@ public class ProductDetail {
         sb.append("ProductDetail [");
         sb.append("productId=").append(productId);
         sb.append(", ");
+        sb.append("merchantId=").append(merchantId);
+        sb.append(", ");
         sb.append("categoryId=").append(categoryId);
+        sb.append(", ");
+        sb.append("categoryName=").append(categoryName);
         sb.append(", ");
         sb.append("imageUrl=").append(imageUrl);
         sb.append(", ");

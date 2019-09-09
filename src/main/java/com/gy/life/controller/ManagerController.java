@@ -4,6 +4,7 @@ package com.gy.life.controller;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.model.RoleInform;
 import com.gy.life.service.impl.ManagerServiceImpl;
+import com.gy.life.utils.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,6 @@ public class ManagerController {
         if (roleByPhone != null) {
             return ResultEntity.getErrorResult("此手机号已经注册");
         }
-
         int column = managerService.insertRole(roleInform);
         if (column > 0) {
             return ResultEntity.getSuccessResult("注册成功");

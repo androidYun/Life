@@ -18,6 +18,7 @@
             <result column="buy_count" jdbcType="DECIMAL" property="buyCount"/>
             <association property="productDetail" javaType="com.gy.life.model.ProductDetail" column="product_id">
                 <id column="product_id" jdbcType="INTEGER" property="productId"/>
+                <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
                 <result column="image_url" jdbcType="INTEGER" property="imageUrl"/>
                 <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
                 <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
@@ -61,6 +62,7 @@
         </association>
         <association property="productDetail" javaType="com.gy.life.model.ProductDetail">
             <id column="product_id" jdbcType="INTEGER" property="productId"/>
+            <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
             <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
             <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
             <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
@@ -103,6 +105,7 @@
         </association>
         <association property="productDetail" javaType="com.gy.life.model.ProductDetail">
             <id column="product_id" jdbcType="INTEGER" property="productId"/>
+            <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
             <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
             <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
             <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>

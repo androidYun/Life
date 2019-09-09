@@ -24,7 +24,10 @@ public class ProductOrder {
     /** 预定订单Id, 数据库字段：order_id */
     private Integer orderId;
 
-    /** 订单编号Id, 数据库字段：order_number */
+    /**  数据库字段：merchant_id */
+    private Integer merchantId;
+
+    /**  数据库字段：order_number */
     private String orderNumber;
 
     /**  数据库字段：order_time */
@@ -36,25 +39,17 @@ public class ProductOrder {
     /** 预期金额 , 数据库字段：total_price */
     private BigDecimal totalPrice;
 
-    /** 总数量 , 数据库字段：total_count */
+    /**  数据库字段：total_count */
     private Integer totalCount;
 
-    /** 订单类型 0新创建 1 派送中 2 结束, 数据库字段：order_status */
+    /** 订单类型 0新创建 1 接收订单 2 已完成 3 已取消, 数据库字段：order_status */
     private Integer orderStatus;
 
     /** 留言, 数据库字段：leave_message */
     private String leaveMessage;
 
-    /** 地址：address_id */
-    private int addressId;
-
-    public String getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
-    }
+    /**  数据库字段：address_id */
+    private Integer addressId;
 
     /** 设置预定订单Id, 数据库字段：product_order.order_id */
     public void setOrderId(Integer orderId) {
@@ -64,6 +59,26 @@ public class ProductOrder {
     /** 获取预定订单Id, 数据库字段：product_order.order_id */
     public Integer getOrderId() {
         return this.orderId;
+    }
+
+    /**  数据库字段：product_order.merchant_id */
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    /**  数据库字段：product_order.merchant_id */
+    public Integer getMerchantId() {
+        return this.merchantId;
+    }
+
+    /**  数据库字段：product_order.order_number */
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    /**  数据库字段：product_order.order_number */
+    public String getOrderNumber() {
+        return this.orderNumber;
     }
 
     /**  数据库字段：product_order.order_time */
@@ -96,12 +111,22 @@ public class ProductOrder {
         return this.totalPrice;
     }
 
-    /** 设置订单类型 0新创建 1 派送中 2 结束, 数据库字段：product_order.order_status */
+    /**  数据库字段：product_order.total_count */
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    /**  数据库字段：product_order.total_count */
+    public Integer getTotalCount() {
+        return this.totalCount;
+    }
+
+    /** 设置订单类型 0新创建 1 接收订单 2 已完成 3 已取消, 数据库字段：product_order.order_status */
     public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    /** 获取订单类型 0新创建 1 派送中 2 结束, 数据库字段：product_order.order_status */
+    /** 获取订单类型 0新创建 1 接收订单 2 已完成 3 已取消, 数据库字段：product_order.order_status */
     public Integer getOrderStatus() {
         return this.orderStatus;
     }
@@ -116,20 +141,14 @@ public class ProductOrder {
         return this.leaveMessage;
     }
 
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
+    /**  数据库字段：product_order.address_id */
+    public void setAddressId(Integer addressId) {
         this.addressId = addressId;
     }
 
-    public Integer getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(Integer totalCount) {
-        this.totalCount = totalCount;
+    /**  数据库字段：product_order.address_id */
+    public Integer getAddressId() {
+        return this.addressId;
     }
 
     @Override
@@ -175,15 +194,23 @@ public class ProductOrder {
         sb.append("ProductOrder [");
         sb.append("orderId=").append(orderId);
         sb.append(", ");
+        sb.append("merchantId=").append(merchantId);
+        sb.append(", ");
+        sb.append("orderNumber=").append(orderNumber);
+        sb.append(", ");
         sb.append("orderTime=").append(orderTime);
         sb.append(", ");
         sb.append("userId=").append(userId);
         sb.append(", ");
         sb.append("totalPrice=").append(totalPrice);
         sb.append(", ");
+        sb.append("totalCount=").append(totalCount);
+        sb.append(", ");
         sb.append("orderStatus=").append(orderStatus);
         sb.append(", ");
         sb.append("leaveMessage=").append(leaveMessage);
+        sb.append(", ");
+        sb.append("addressId=").append(addressId);
         sb.append("]");
 
         return sb.toString();

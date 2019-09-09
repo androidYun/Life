@@ -3,6 +3,7 @@
 <mapper namespace="com.gy.life.mapper.ProductDetailMapper">
     <resultMap id="BaseResultMap" type="com.gy.life.model.ProductDetail">
         <id column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="merchant_id" jdbcType="INTEGER" property="merchantId"/>
         <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
         <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
         <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
@@ -27,13 +28,13 @@
     where product_id = #{productId,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.gy.life.model.ProductDetail">
-    insert into product_detail (product_id, category_id,category_name,image_url, product_name,
+    insert into product_detail (product_id,merchant_id, category_id,category_name,image_url, product_name,
       product_desc, create_time, max_count,
       unit, product_finish_time, delivery_time,
       pick_address, delivery_type, attention, 
       delivery_money, sell_out_count, product_price,
       market_price, publish_phone)
-    values (#{productId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER},#{categoryName,jdbcType=VARCHAR},#{imageUrl,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR},
+    values (#{productId,jdbcType=INTEGER},#{merchantId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER},#{categoryName,jdbcType=VARCHAR},#{imageUrl,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR},
       #{productDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{maxCount,jdbcType=INTEGER},
       #{unit,jdbcType=VARCHAR}, #{productFinishTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP},
       #{pickAddress,jdbcType=VARCHAR}, #{deliveryType,jdbcType=INTEGER}, #{attention,jdbcType=VARCHAR}, 
@@ -43,6 +44,7 @@
     <update id="updateByPrimaryKey" parameterType="com.gy.life.model.ProductDetail">
     update product_detail
     set  category_id = #{categoryId,jdbcType=INTEGER},
+      merchant_id = #{mrchantId,jdbcType=INTEGER},
       category_name = #{categoryId,jdbcType=VARCHAR},
       image_url = #{imageUrl,jdbcType=VARCHAR},
       product_name = #{productName,jdbcType=VARCHAR},
@@ -63,21 +65,22 @@
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select product_id, category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit,
+    select product_id, merchant_id,category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit,
     product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money,
     sell_out_count, product_price, market_price, publish_phone
     from product_detail
     where product_id = #{productId,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select pd.product_id, category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit,
+    select pd.product_id, merchant_id,category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit,
     product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money,
     COUNT(opi.buy_count) as sell_out_count, product_price, market_price, publish_phone
-    from product_detail pd left join order_product_item  opi on  pd.product_id=opi.product_id GROUP BY pd.product_id
+    from product_detail pd left join order_product_item  opi on  pd.product_id=opi.product_id where  pd.merchant_id=#{merchantId} GROUP BY pd.product_id
   </select>
 
     <select id="selectListByProductId" parameterType="java.util.List" resultMap="BaseResultMap">
-        select product_id,category_id,category_name, image_url, product_name, product_desc, create_time, max_count,
+        select product_id,merchant_id,category_id,category_name, image_url, product_name, product_desc, create_time,
+        max_count,
         unit,
         product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money,
         sell_out_count, product_price, market_price, publish_phone

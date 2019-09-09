@@ -9,4 +9,7 @@ public interface RoleUserService {
 
 
     RoleInform selectByPhoneAndPassword(String phoneNumber, String password);
+
+
+    RoleInform selectByPhone(String phoneNumber);
 }

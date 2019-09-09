@@ -21,9 +21,9 @@ public class ProductGoodServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDetail> selectList() {
+    public List<ProductDetail> selectList(int merchantId) {
         Page<Object> page = PageHelper.startPage(1, 20);
-        return productDetailMapper.selectAll();
+        return productDetailMapper.selectAll(merchantId);
     }
 
     @Override
