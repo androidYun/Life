@@ -52,9 +52,9 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResultEntity loadProduct(@RequestParam(value = "categoryId", required = false) Integer categoryId) {
+    public ResultEntity loadProduct(@RequestParam(value = "categoryId", required = false) Integer categoryId, @RequestParam(value = "merchantId") int merchantId) {
         if (categoryId == null) {
-            return ResultEntity.getSuccessResult(reserveGoodService.selectList());
+            return ResultEntity.getSuccessResult(reserveGoodService.selectList(merchantId));
         } else {
             return ResultEntity.getSuccessResult(categoryService.selectProductListByCategoryId(categoryId));
         }
@@ -77,7 +77,7 @@ public class ProductController {
     public ResultEntity deleteReserve(@PathVariable("productId") int productId) {
         int deleteCount = reserveGoodService.deleteReserve(productId);
         if (deleteCount > 0) {
-            return ResultEntity.getSuccessResult(reserveGoodService.selectList());
+            return ResultEntity.getSuccessResult("删除成功");
         } else {
             return ResultEntity.getSuccessResult("删除失败");
         }

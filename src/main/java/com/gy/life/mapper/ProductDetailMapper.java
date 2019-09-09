@@ -16,7 +16,7 @@ public interface ProductDetailMapper extends CrudMapper<ProductDetail, Integer> 
     ProductDetail selectByPrimaryKey(Integer reserveId);
 
 
-    List<ProductDetail> selectAll();
+    List<ProductDetail> selectAll(int merchantId);
 
     List<ProductDetail> selectListByProductId(@Param("productIdList") List<Integer> productIdList);
 

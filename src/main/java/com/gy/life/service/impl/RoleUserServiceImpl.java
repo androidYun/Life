@@ -30,4 +30,9 @@ public class RoleUserServiceImpl implements RoleUserService {
         }
         return null;
     }
+
+    @Override
+    public RoleInform selectByPhone(String phoneNumber) {
+        return roleInformMapper.selectByPhone(phoneNumber);
+    }
 }

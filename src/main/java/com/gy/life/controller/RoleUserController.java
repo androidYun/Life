@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @RequestMapping(value = "/role")
 @RestController
 public class RoleUserController {
@@ -22,6 +24,10 @@ public class RoleUserController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResultEntity insertRole(@RequestBody RoleInform roleInform) {
+        RoleInform selectRole = roleUserService.selectByPhone(roleInform.getPhoneNumber());
+        if (selectRole != null) {
+            return ResultEntity.getErrorResult("此手机号已经注册");
+        }
         int insertCount = roleUserService.insertRoleUser(roleInform);
         if (insertCount > 0) {
             return ResultEntity.getSuccessResult("插入成功");
@@ -32,8 +38,7 @@ public class RoleUserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ResultEntity loadRole(String phoneNumber, String password, int roleType) {
-        System.out.println("ddd");
-        RoleInform roleInform = roleUserService.selectByPhoneAndPassword(phoneNumber, password);
+        RoleInform roleInform = roleUserService.selectByPhoneAndPassword( phoneNumber, password);
         if (roleInform != null) {
             if (roleInform.getRoleType() == roleType) {
                 UserToken userToken = new UserToken();

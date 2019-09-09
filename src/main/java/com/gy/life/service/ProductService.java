@@ -8,7 +8,7 @@ public interface ProductService {
 
     int insertProductGood(ProductDetail productDetail);
 
-    List<ProductDetail> selectList();
+    List<ProductDetail> selectList(int merchantId);
 
     List<ProductDetail> selectListByProductId(List<Integer> productIdList);
 
