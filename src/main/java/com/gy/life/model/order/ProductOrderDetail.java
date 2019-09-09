@@ -33,12 +33,22 @@ public class ProductOrderDetail {
 
     private String orderNumber;
 
+    private Integer totalCount;
+
     /**
      * 留言, 数据库字段：leave_message
      */
     private String leaveMessage;
 
     private List<OrderProductItemDetail> orderProductItemDetailList;
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
 
     public Integer getOrderId() {
         return orderId;

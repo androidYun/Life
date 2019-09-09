@@ -5,20 +5,16 @@ import com.gy.life.model.ProductDetail;
 import com.gy.life.model.ProductOrder;
 import com.gy.life.model.UserInform;
 
+import java.util.List;
+
 public class ProductOrderUserDetail {
-    private ProductDetail productDetail;
 
     private ProductOrder productOrder;
 
     private Address address;
 
-    public ProductDetail getProductDetail() {
-        return productDetail;
-    }
+    private List<ProductDetail> productDetailList;
 
-    public void setProductDetail(ProductDetail productDetail) {
-        this.productDetail = productDetail;
-    }
 
     public ProductOrder getProductOrder() {
         return productOrder;
@@ -34,5 +30,13 @@ public class ProductOrderUserDetail {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<ProductDetail> getProductDetailList() {
+        return productDetailList;
+    }
+
+    public void setProductDetailList(List<ProductDetail> productDetailList) {
+        this.productDetailList = productDetailList;
     }
 }

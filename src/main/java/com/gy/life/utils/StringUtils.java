@@ -11,7 +11,7 @@ public class StringUtils {
      * @return
      */
     public static synchronized String getOrderNo() {
-        return DateUtils.getDateTime() + getRandom(14) + "";
+        return DateUtils.getDateTime() + getRandom(4) + "";
     }
 
     /**
