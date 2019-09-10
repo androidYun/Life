@@ -15,5 +15,5 @@ public interface CategoryService {
 
     ProductCategory selectCategoryByName(String categoryName);
 
-    List<ProductDetail> selectProductListByCategoryId(int categoryId);
+    List<ProductDetail> selectProductListByCategoryId(int categoryId,int merchantId);
 }

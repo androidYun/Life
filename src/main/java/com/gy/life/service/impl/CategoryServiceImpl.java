@@ -37,8 +37,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<ProductDetail> selectProductListByCategoryId(int categoryId) {
-        return productCategoryMapper.selectProductDetailByCategoryId(categoryId);
+    public List<ProductDetail> selectProductListByCategoryId(int categoryId,int merchantId) {
+        return productCategoryMapper.selectProductDetailByCategoryId(categoryId,merchantId);
     }
 
 }

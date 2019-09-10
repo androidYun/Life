@@ -40,8 +40,12 @@ public class UserInform {
 
     /**  数据库字段：open_id */
     private String openId;
+
     /**  数据库字段：token */
     private String token;
+
+    /**  数据库字段：merchant_id */
+    private Integer merchantId;
 
     /**  数据库字段：user_inform.user_id */
     public void setUserId(Integer userId) {
@@ -123,12 +127,24 @@ public class UserInform {
         return this.openId;
     }
 
-    public String getToken() {
-        return token;
-    }
-
+    /**  数据库字段：user_inform.token */
     public void setToken(String token) {
         this.token = token;
+    }
+
+    /**  数据库字段：user_inform.token */
+    public String getToken() {
+        return this.token;
+    }
+
+    /**  数据库字段：user_inform.merchant_id */
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    /**  数据库字段：user_inform.merchant_id */
+    public Integer getMerchantId() {
+        return this.merchantId;
     }
 
     @Override
@@ -186,6 +202,10 @@ public class UserInform {
         sb.append("integral=").append(integral);
         sb.append(", ");
         sb.append("openId=").append(openId);
+        sb.append(", ");
+        sb.append("token=").append(token);
+        sb.append(", ");
+        sb.append("merchantId=").append(merchantId);
         sb.append("]");
 
         return sb.toString();

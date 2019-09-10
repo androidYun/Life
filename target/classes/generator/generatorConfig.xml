@@ -28,8 +28,9 @@
         <javaClientGenerator targetPackage="com.gy.life.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table schema="Lift" tableName="address"
-               domainObjectName="Address" enableCountByExample="false"
+        <table schema="Lift" tableName="user_inform"
+               domainObjectName="UserInform" enableCountByExample="false"
+
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
             <property name="useActualColumnNames" value="false"/>

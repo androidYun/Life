@@ -12,6 +12,8 @@ public class GoodCreateOrderParams {
 
     private int addressId;
 
+    private int merchantId;
+
     public static class BuyProductInform {
 
         public BuyProductInform() {
@@ -87,5 +89,13 @@ public class GoodCreateOrderParams {
 
     public void setAddressId(int addressId) {
         this.addressId = addressId;
+    }
+
+    public int getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(int merchantId) {
+        this.merchantId = merchantId;
     }
 }

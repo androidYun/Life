@@ -11,10 +11,10 @@ import java.util.Date;
 
 public class RoleInform {
     @Id
-    @Column(name = "role_id")
+    @Column(name = "merchant_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /**  数据库字段：role_id */
-    private Integer roleId;
+    /**  数据库字段：merchant_id */
+    private Integer merchantId;
 
     /** 1 超级管理员   2管理员   3 员工, 数据库字段：role_type */
     private Integer roleType;
@@ -34,23 +34,26 @@ public class RoleInform {
     /** 商户编号, 数据库字段：merchant_no */
     private String merchantNo;
 
-    /** 您对应的小程序标识, 数据库字段：merchant_id */
-    private Integer merchantId;
-
     /** 他的父亲Id是谁, 数据库字段：parent_id */
     private Integer parentId;
 
     /**  数据库字段：token */
     private String token;
 
-    /**  数据库字段：role_inform.role_id */
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    /** 微信openId, 数据库字段：open_id */
+    private String openId;
+
+    /**  数据库字段：secret */
+    private String secret;
+
+    /**  数据库字段：role_inform.merchant_id */
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
     }
 
-    /**  数据库字段：role_inform.role_id */
-    public Integer getRoleId() {
-        return this.roleId;
+    /**  数据库字段：role_inform.merchant_id */
+    public Integer getMerchantId() {
+        return this.merchantId;
     }
 
     /** 设置1 超级管理员   2管理员   3 员工, 数据库字段：role_inform.role_type */
@@ -113,16 +116,6 @@ public class RoleInform {
         return this.merchantNo;
     }
 
-    /** 设置您对应的小程序标识, 数据库字段：role_inform.merchant_id */
-    public void setMerchantId(Integer merchantId) {
-        this.merchantId = merchantId;
-    }
-
-    /** 获取您对应的小程序标识, 数据库字段：role_inform.merchant_id */
-    public Integer getMerchantId() {
-        return this.merchantId;
-    }
-
     /** 设置他的父亲Id是谁, 数据库字段：role_inform.parent_id */
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
@@ -143,11 +136,32 @@ public class RoleInform {
         return this.token;
     }
 
+    /** 设置微信openId, 数据库字段：role_inform.open_id */
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
+    /** 获取微信openId, 数据库字段：role_inform.open_id */
+    public String getOpenId() {
+        return this.openId;
+    }
+
+    /**  数据库字段：role_inform.secret */
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
+    /**  数据库字段：role_inform.secret */
+    public String getSecret() {
+        return this.secret;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = (prime * result) + ((roleId == null) ? 0 : roleId.hashCode());
+        result = (prime * result) +
+                ((merchantId == null) ? 0 : merchantId.hashCode());
 
         return result;
     }
@@ -168,11 +182,11 @@ public class RoleInform {
 
         RoleInform other = (RoleInform) obj;
 
-        if (roleId == null) {
-            if (other.roleId != null) {
+        if (merchantId == null) {
+            if (other.merchantId != null) {
                 return false;
             }
-        } else if (!roleId.equals(other.roleId)) {
+        } else if (!merchantId.equals(other.merchantId)) {
             return false;
         }
 
@@ -183,7 +197,7 @@ public class RoleInform {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("RoleInform [");
-        sb.append("roleId=").append(roleId);
+        sb.append("merchantId=").append(merchantId);
         sb.append(", ");
         sb.append("roleType=").append(roleType);
         sb.append(", ");
@@ -197,11 +211,13 @@ public class RoleInform {
         sb.append(", ");
         sb.append("merchantNo=").append(merchantNo);
         sb.append(", ");
-        sb.append("merchantId=").append(merchantId);
-        sb.append(", ");
         sb.append("parentId=").append(parentId);
         sb.append(", ");
         sb.append("token=").append(token);
+        sb.append(", ");
+        sb.append("openId=").append(openId);
+        sb.append(", ");
+        sb.append("secret=").append(secret);
         sb.append("]");
 
         return sb.toString();

@@ -13,6 +13,8 @@ public class CartParams {
     String leaveMessage;
 
     private int addressId;
+    private int merchantId;
+
 
 
     public List<OrderRequest> getCartList() {
@@ -53,5 +55,13 @@ public class CartParams {
 
     public void setAddressId(int addressId) {
         this.addressId = addressId;
+    }
+
+    public int getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(int merchantId) {
+        this.merchantId = merchantId;
     }
 }

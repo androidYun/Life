@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gy.life.mapper.RoleInformMapper">
-    <resultMap id="BaseResultMap" type="com.gy.life.model.RoleInform">
-        <id column="role_id" jdbcType="INTEGER" property="roleId"/>
-        <result column="role_type" jdbcType="INTEGER" property="roleType"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.gy.life.model.RoleInform">
+    <id column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+    <result column="role_type" jdbcType="INTEGER" property="roleType" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="merchant_no" jdbcType="VARCHAR" property="merchantNo" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="secret" jdbcType="VARCHAR" property="secret" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from role_inform
-    where role_id = #{roleId,jdbcType=INTEGER}
+    where merchant_id = #{merchantId,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.gy.life.model.RoleInform">
-    insert into role_inform (role_id, role_type, name, 
-      password, phone_number, create_time
-      )
-    values (#{roleId,jdbcType=INTEGER}, #{roleType,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" parameterType="com.gy.life.model.RoleInform">
+    insert into role_inform (merchant_id, role_type, name, 
+      password, phone_number, create_time, 
+      merchant_no, parent_id, token, 
+      open_id, secret)
+    values (#{merchantId,jdbcType=INTEGER}, #{roleType,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{merchantNo,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{secret,jdbcType=VARCHAR})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.gy.life.model.RoleInform">
+  <update id="updateByPrimaryKey" parameterType="com.gy.life.model.RoleInform">
     update role_inform
     set role_type = #{roleType,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       phone_number = #{phoneNumber,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
-    where role_id = #{roleId,jdbcType=INTEGER}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      token = #{token,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      secret = #{secret,jdbcType=VARCHAR}
+    where merchant_id = #{merchantId,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select role_id, role_type, name, password, phone_number, create_time
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, 
+    parent_id, token, open_id, secret
     from role_inform
-    where role_id = #{roleId,jdbcType=INTEGER}
+    where merchant_id = #{merchantId,jdbcType=INTEGER}
   </select>
-    <select id="selectByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select role_id, role_type, name, password, phone_number, create_time
-    from role_inform
-    where phone_number = #{phoneNumber,jdbcType=INTEGER}
-    limit 1
-  </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-    select role_id, role_type, name, password, phone_number, create_time
+  <select id="selectAll" resultMap="BaseResultMap">
+    select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, 
+    parent_id, token, open_id, secret
     from role_inform
   </select>
+
 </mapper>
