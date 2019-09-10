@@ -10,6 +10,8 @@
     <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
     <result column="integral" jdbcType="INTEGER" property="integral" />
     <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_inform
@@ -18,10 +20,12 @@
   <insert id="insert" parameterType="com.gy.life.model.UserInform">
     insert into user_inform (user_id, name, image_url, 
       build_no, village_name, phone_number, 
-      integral, open_id)
+      integral, open_id, token, 
+      merchant_id)
     values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, 
       #{buildNo,jdbcType=VARCHAR}, #{villageName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
-      #{integral,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR})
+      #{integral,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
+      #{merchantId,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.gy.life.model.UserInform">
     update user_inform
@@ -31,18 +35,20 @@
       village_name = #{villageName,jdbcType=VARCHAR},
       phone_number = #{phoneNumber,jdbcType=VARCHAR},
       integral = #{integral,jdbcType=INTEGER},
-      open_id = #{openId,jdbcType=VARCHAR}
+      open_id = #{openId,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      merchant_id = #{merchantId,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select user_id, name, image_url, build_no, village_name, phone_number, integral, 
-    open_id
+    open_id, token, merchant_id
     from user_inform
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select user_id, name, image_url, build_no, village_name, phone_number, integral, 
-    open_id
+    open_id, token, merchant_id
     from user_inform
   </select>
 </mapper>

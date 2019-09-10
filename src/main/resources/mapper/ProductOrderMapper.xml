@@ -18,7 +18,7 @@
             <result column="buy_count" jdbcType="DECIMAL" property="buyCount"/>
             <association property="productDetail" javaType="com.gy.life.model.ProductDetail" column="product_id">
                 <id column="product_id" jdbcType="INTEGER" property="productId"/>
-                <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+                <result column="merchant_id" jdbcType="INTEGER" property="merchantId"/>
                 <result column="image_url" jdbcType="INTEGER" property="imageUrl"/>
                 <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
                 <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
@@ -62,7 +62,7 @@
         </association>
         <association property="productDetail" javaType="com.gy.life.model.ProductDetail">
             <id column="product_id" jdbcType="INTEGER" property="productId"/>
-            <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+            <result column="merchant_id" jdbcType="INTEGER" property="merchantId"/>
             <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
             <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
             <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
@@ -103,9 +103,14 @@
             <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>
             <result column="leave_message" jdbcType="VARCHAR" property="leaveMessage"/>
         </association>
-        <association property="productDetail" javaType="com.gy.life.model.ProductDetail">
+        <association property="address" javaType="com.gy.life.model.Address">
+            <id column="address_id" jdbcType="INTEGER" property="addressId"/>
+            <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+            <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+        </association>
+        <collection property="productDetailList" ofType="com.gy.life.model.ProductDetail" column="product_id">
             <id column="product_id" jdbcType="INTEGER" property="productId"/>
-            <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+            <result column="merchant_id" jdbcType="INTEGER" property="merchantId"/>
             <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
             <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
             <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
@@ -124,12 +129,7 @@
             <result column="product_price" jdbcType="DECIMAL" property="productPrice"/>
             <result column="market_price" jdbcType="DECIMAL" property="marketPrice"/>
             <result column="publish_phone" jdbcType="VARCHAR" property="publishPhone"/>
-        </association>
-        <association property="address" javaType="com.gy.life.model.Address">
-            <id column="address_id" jdbcType="INTEGER" property="addressId"/>
-            <result column="user_name" jdbcType="VARCHAR" property="userName"/>
-            <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
-        </association>
+        </collection>
     </resultMap>
     <select id="selectAllOrderListDetail" resultMap="OrderProductUserDetail">
         SELECT po.*,pd.* ,address.* from product_order po LEFT JOIN order_product_item opi ON po.order_id= opi.order_id

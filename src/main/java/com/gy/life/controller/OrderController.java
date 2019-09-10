@@ -38,6 +38,7 @@ public class OrderController {
         productOrder.setLeaveMessage(cartParams.getLeaveMessage());
         productOrder.setOrderNumber(StringUtils.getOrderNo());
         productOrder.setOrderTime(DateUtils.getCurrentTime());
+        productOrder.setMerchantId(cartParams.getMerchantId());
         productOrder.setTotalPrice(cartParams.getTotalPrice());
         productOrder.setTotalCount(calculateCartTotalCount(cartParams.getCartList()));
         productOrder.setUserId(cartParams.getUserId());
@@ -66,6 +67,7 @@ public class OrderController {
         ProductOrder productOrder = new ProductOrder();
         productOrder.setLeaveMessage(goodCreateOrderParams.getLeaveMessage());
         productOrder.setOrderStatus(0);
+        productOrder.setMerchantId(goodCreateOrderParams.getMerchantId());
         productOrder.setOrderTime(DateUtils.getCurrentTime());
         productOrder.setTotalPrice(goodCreateOrderParams.getTotalPrice());
         productOrder.setTotalCount(calculateTotalCount(goodCreateOrderParams.getProductIdList()));
@@ -92,10 +94,11 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/allList", method = RequestMethod.GET)
-    public ResultEntity loadAllOrder(@RequestParam("orderStatus") int orderStatus, @RequestParam(value = "startTime", required = false) Date startTime,
-                                     @RequestParam(value = "endTime", required = false) Date endTime) {
+    public ResultEntity loadAllOrder(@RequestParam("orderStatus") int orderStatus,
+                                     @RequestParam(value = "startTime", required = false) String startTime,
+                                     @RequestParam(value = "endTime", required = false) String endTime) {
 
-        List<ProductOrderUserDetail> productOrderUserDetails = orderService.selectAllOrderList(orderStatus, startTime, endTime);
+        List<ProductOrderUserDetail> productOrderUserDetails = orderService.selectAllOrderList(orderStatus, DateUtils.getDateForString(startTime), DateUtils.getDateForString(endTime));
         return ResultEntity.getSuccessResult(productOrderUserDetails);
     }
 
@@ -151,7 +154,8 @@ public class OrderController {
         }
         return totalCount;
     }
-    private int calculateCartTotalCount( List<OrderRequest> cartList) {
+
+    private int calculateCartTotalCount(List<OrderRequest> cartList) {
         int totalCount = 0;
         for (OrderRequest orderRequest : cartList) {
             totalCount += orderRequest.getBuyCount();

@@ -56,7 +56,7 @@ public class ProductController {
         if (categoryId == null) {
             return ResultEntity.getSuccessResult(reserveGoodService.selectList(merchantId));
         } else {
-            return ResultEntity.getSuccessResult(categoryService.selectProductListByCategoryId(categoryId));
+            return ResultEntity.getSuccessResult(categoryService.selectProductListByCategoryId(categoryId,merchantId));
         }
     }
 

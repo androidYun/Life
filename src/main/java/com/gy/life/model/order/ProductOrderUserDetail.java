@@ -5,19 +5,21 @@ import com.gy.life.model.ProductDetail;
 import com.gy.life.model.ProductOrder;
 import com.gy.life.model.UserInform;
 
+import java.util.List;
+
 public class ProductOrderUserDetail {
-    private ProductDetail productDetail;
+    private List<ProductDetail> productDetailList;
 
     private ProductOrder productOrder;
 
     private Address address;
 
-    public ProductDetail getProductDetail() {
-        return productDetail;
+    public List<ProductDetail> getProductDetailList() {
+        return productDetailList;
     }
 
-    public void setProductDetail(ProductDetail productDetail) {
-        this.productDetail = productDetail;
+    public void setProductDetailList(List<ProductDetail> productDetailList) {
+        this.productDetailList = productDetailList;
     }
 
     public ProductOrder getProductOrder() {

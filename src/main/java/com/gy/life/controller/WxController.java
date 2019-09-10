@@ -4,7 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.jwt.JwtTokenUtils;
+import com.gy.life.mapper.RoleInformMapper;
+import com.gy.life.model.RoleInform;
 import com.gy.life.model.UserInform;
+import com.gy.life.service.impl.RoleUserServiceImpl;
 import com.gy.life.service.impl.UserInformServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +38,9 @@ public class WxController {
     @Autowired
     JwtTokenUtils jwtTokenUtils;
 
+    @Autowired
+    RoleUserServiceImpl roleUserService;
+
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ResultEntity login(String code) {
@@ -48,10 +54,11 @@ public class WxController {
         String openid = jsonObject.getString("openid");
         String session_key = jsonObject.getString("session_key");
         UserInform selectUserInform = userInformService.selectUserByOpenId(openid);
-        System.out.println("日志" + openid);
+        RoleInform roleInform = roleUserService.selectRoleByOpenId(openid);
         if (selectUserInform == null) {
             UserInform userInform = new UserInform();
             userInform.setOpenId(openid);
+            userInform.setMerchantId(selectUserInform.getMerchantId());
             int userId = userInformService.insertUserInform(userInform);
             String token = jwtTokenUtils.createToken(userId + "");
             userInform.setToken(token);

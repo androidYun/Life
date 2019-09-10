@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface ProductCategoryMapper extends CrudMapper<ProductCategory, Integer> {
 
-    @Select("select * from product_detail where category_id=#{categoryId}")
-    List<ProductDetail> selectProductDetailByCategoryId(@Param("categoryId") int categoryId);
+    @Select("select * from product_detail where category_id=#{categoryId} and merchant_id=#{merchantId}")
+    List<ProductDetail> selectProductDetailByCategoryId(@Param("categoryId") int categoryId,
+                                                        @Param("merchantId") int merchantId);
 }
