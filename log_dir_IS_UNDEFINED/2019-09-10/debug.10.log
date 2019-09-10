@@ -1,0 +1,11 @@
+2019-09-10 22:11:05 6599 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 6.486 seconds (JVM running for 7.207) 
+2019-09-10 22:11:05 6832 [http-nio-8084-exec-1] DEBUG c.g.l.m.R.selectByPhone - ==>  Preparing: select ri.* from role_inform ri where phone_number=?  
+2019-09-10 22:11:05 6847 [http-nio-8084-exec-1] DEBUG c.g.l.m.R.selectByPhone - ==> Parameters: 33232(String) 
+2019-09-10 22:11:05 6886 [http-nio-8084-exec-1] DEBUG c.g.l.m.R.selectByPhone - <==      Total: 0 
+2019-09-10 22:11:33 540  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on W7EG1F45H7EOJDL with PID 9580 (D:\javaWorkSpace\Life\target\classes started by Administrator in D:\javaWorkSpace\Life) 
+2019-09-10 22:11:33 542  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-10 22:11:33 542  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 
+2019-09-10 22:11:38 5906 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 5.803 seconds (JVM running for 6.524) 
+2019-09-10 22:13:16 546  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on W7EG1F45H7EOJDL with PID 1096 (D:\javaWorkSpace\Life\target\classes started by Administrator in D:\javaWorkSpace\Life) 
+2019-09-10 22:13:16 547  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-10 22:13:16 548  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 

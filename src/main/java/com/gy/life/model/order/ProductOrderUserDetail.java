@@ -1,25 +1,23 @@
 package com.gy.life.model.order;
 
 import com.gy.life.model.Address;
-import com.gy.life.model.ProductDetail;
 import com.gy.life.model.ProductOrder;
-import com.gy.life.model.UserInform;
 
 import java.util.List;
 
 public class ProductOrderUserDetail {
-    private List<ProductDetail> productDetailList;
+    private List<OrderProductItemDetail> orderProductItemDetailList;
 
     private ProductOrder productOrder;
 
     private Address address;
 
-    public List<ProductDetail> getProductDetailList() {
-        return productDetailList;
+    public List<OrderProductItemDetail> getOrderProductItemDetailList() {
+        return orderProductItemDetailList;
     }
 
-    public void setProductDetailList(List<ProductDetail> productDetailList) {
-        this.productDetailList = productDetailList;
+    public void setOrderProductItemDetailList(List<OrderProductItemDetail> orderProductItemDetailList) {
+        this.orderProductItemDetailList = orderProductItemDetailList;
     }
 
     public ProductOrder getProductOrder() {

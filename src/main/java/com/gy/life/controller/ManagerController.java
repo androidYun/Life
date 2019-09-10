@@ -2,6 +2,7 @@ package com.gy.life.controller;
 
 
 import com.gy.life.common.ResultEntity;
+import com.gy.life.exception.GlobalException;
 import com.gy.life.model.RoleInform;
 import com.gy.life.service.impl.ManagerServiceImpl;
 import com.gy.life.utils.UUIDUtils;
@@ -48,7 +49,7 @@ public class ManagerController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     @ResponseBody
-    public ResultEntity login(String phoneNumber, String password) {
+    public ResultEntity login(String phoneNumber, String password) throws GlobalException {
         if (StringUtils.isEmpty(phoneNumber)) {
             return ResultEntity.getErrorResult("手机号不能为空");
         }

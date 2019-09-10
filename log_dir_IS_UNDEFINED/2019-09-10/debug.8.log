@@ -1,0 +1,8 @@
+2019-09-10 22:06:01 6962 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 6.849 seconds (JVM running for 7.568) 
+2019-09-10 22:07:10 527  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on W7EG1F45H7EOJDL with PID 11168 (D:\javaWorkSpace\Life\target\classes started by Administrator in D:\javaWorkSpace\Life) 
+2019-09-10 22:07:10 529  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-10 22:07:10 529  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 
+2019-09-10 22:07:14 4743 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 4.655 seconds (JVM running for 5.282) 
+2019-09-10 22:10:00 535  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on W7EG1F45H7EOJDL with PID 7820 (D:\javaWorkSpace\Life\target\classes started by Administrator in D:\javaWorkSpace\Life) 
+2019-09-10 22:10:00 537  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-10 22:10:00 537  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 

@@ -1,0 +1,6 @@
+2019-09-10 21:49:16 68853 [http-nio-8084-exec-4] DEBUG c.g.life.mapper.GoodUnitMapper.list - <==      Total: 19 
+2019-09-10 21:49:17 70116 [http-nio-8084-exec-5] DEBUG c.g.l.m.R.selectByPrimaryKey - ==>  Preparing: select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, parent_id, token, open_id, secret from role_inform where merchant_id = ?  
+2019-09-10 21:49:17 70117 [http-nio-8084-exec-5] DEBUG c.g.l.m.R.selectByPrimaryKey - ==> Parameters: 5(Integer) 
+2019-09-10 21:49:17 70145 [http-nio-8084-exec-5] DEBUG c.g.l.m.R.selectByPrimaryKey - <==      Total: 1 
+2019-09-10 21:49:18 70579 [http-nio-8084-exec-6] DEBUG c.g.l.mapper.HomeServiceMapper.list - ==>  Preparing: SELECT t.`home_service_id` , t.`service_content` , t.`work_name` , t.`work_address` , t.`work_phone` , t.`service_amount` , t.`publish_time` , t.`service_count` , t.`service_state` , t.`service_company` , t.`unit` FROM `home_service` t  
+2019-09-10 21:49:18 70580 [http-nio-8084-exec-6] DEBUG c.g.l.mapper.HomeServiceMapper.list - ==> Parameters:  
