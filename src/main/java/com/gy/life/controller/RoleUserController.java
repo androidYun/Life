@@ -2,6 +2,7 @@ package com.gy.life.controller;
 
 import com.gy.life.common.ResultEntity;
 import com.gy.life.common.UserToken;
+import com.gy.life.exception.GlobalException;
 import com.gy.life.jwt.JwtTokenUtils;
 import com.gy.life.model.RoleInform;
 import com.gy.life.service.impl.RoleUserServiceImpl;
@@ -40,23 +41,29 @@ public class RoleUserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ResultEntity loadRole(String phoneNumber, String password, int roleType) {
-        RoleInform roleInform = roleUserService.selectByPhoneAndPassword(phoneNumber, password);
-        if (roleInform != null) {
-            if (roleInform.getRoleType() == roleType) {
-                UserToken userToken = new UserToken();
-                userToken.setPhoneNumber(roleInform.getPhoneNumber());
-                userToken.setUserName(roleInform.getName());
-                userToken.setUserId(roleInform.getMerchantId());
-                String token = jwtTokenUtils.createToken(userToken);
-                roleInform.setToken(token);
-                return ResultEntity.getSuccessResult(roleInform);
-            } else {
-                return ResultEntity.getErrorResult("权限错误");
-            }
+    public ResultEntity loadRole(String phoneNumber, String password, int roleType) throws  GlobalException {
 
-        } else {
-            return ResultEntity.getErrorResult("用户或者面错误");
+        try {
+            RoleInform roleInform = roleUserService.selectByPhoneAndPassword(phoneNumber, password);
+            if (roleInform != null) {
+                if (roleInform.getRoleType() == roleType) {
+                    UserToken userToken = new UserToken();
+                    userToken.setPhoneNumber(roleInform.getPhoneNumber());
+                    userToken.setUserName(roleInform.getName());
+                    userToken.setUserId(roleInform.getMerchantId());
+                    String token = jwtTokenUtils.createToken(userToken);
+                    roleInform.setToken(token);
+                    return ResultEntity.getSuccessResult(roleInform);
+                } else {
+                    return ResultEntity.getErrorResult("权限错误");
+                }
+
+            } else {
+                return ResultEntity.getErrorResult("用户或者面错误");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new GlobalException(e.getMessage());
         }
     }
 

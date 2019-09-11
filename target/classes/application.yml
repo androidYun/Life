@@ -7,6 +7,8 @@ spring:
 
 
 
+
+
     #时间格式统一返回
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #如果使用字符串表示，用这行设置格式
@@ -50,4 +52,7 @@ oauth:
   wx:
     appId: "wx106cd96d636d6e1a"
     secret: "212178ab5e65e29f91ae13a3e5ef1d3f"
-
+logging:
+  config: classpath:logback-spring.xml
+  debug: true
+  level: info

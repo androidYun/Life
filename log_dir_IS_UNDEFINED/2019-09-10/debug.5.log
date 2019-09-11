@@ -1,0 +1,7 @@
+2019-09-10 21:51:22 194697 [http-nio-8084-exec-10] DEBUG c.g.l.m.P.selectAllOrderListDetail - <==      Total: 13 
+2019-09-10 21:51:22 195190 [http-nio-8084-exec-1] DEBUG c.g.l.mapper.HomeServiceMapper.list - ==>  Preparing: SELECT t.`home_service_id` , t.`service_content` , t.`work_name` , t.`work_address` , t.`work_phone` , t.`service_amount` , t.`publish_time` , t.`service_count` , t.`service_state` , t.`service_company` , t.`unit` FROM `home_service` t  
+2019-09-10 21:51:22 195191 [http-nio-8084-exec-1] DEBUG c.g.l.mapper.HomeServiceMapper.list - ==> Parameters:  
+2019-09-10 21:51:22 195215 [http-nio-8084-exec-1] DEBUG c.g.l.mapper.HomeServiceMapper.list - <==      Total: 1 
+2019-09-10 21:59:40 543  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on W7EG1F45H7EOJDL with PID 12772 (D:\javaWorkSpace\Life\target\classes started by Administrator in D:\javaWorkSpace\Life) 
+2019-09-10 21:59:40 544  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-10 21:59:40 545  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 

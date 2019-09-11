@@ -2,6 +2,8 @@ package com.gy.life.model.order;
 
 import com.gy.life.model.ProductDetail;
 
+import java.math.BigDecimal;
+
 public class OrderProductItemDetail {
     /**
      * 数据库字段：product_order_id
@@ -22,6 +24,8 @@ public class OrderProductItemDetail {
      * 购买数量, 数据库字段：buy_count
      */
     private Integer buyCount;
+
+    private BigDecimal singleTotalPrice;
 
     private ProductDetail productDetail;
 
@@ -79,6 +83,15 @@ public class OrderProductItemDetail {
      */
     public Integer getBuyCount() {
         return this.buyCount;
+    }
+
+
+    public BigDecimal getSingleTotalPrice() {
+        return singleTotalPrice;
+    }
+
+    public void setSingleTotalPrice(BigDecimal singleTotalPrice) {
+        this.singleTotalPrice = singleTotalPrice;
     }
 
     public ProductDetail getProductDetail() {

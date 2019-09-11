@@ -1,0 +1,10 @@
+2019-09-10 21:49:14 66620 [http-nio-8084-exec-1] DEBUG c.g.l.m.P.selectAll_COUNT - ==> Parameters: 5(Integer) 
+2019-09-10 21:49:14 66654 [http-nio-8084-exec-1] DEBUG c.g.l.m.P.selectAll_COUNT - <==      Total: 1 
+2019-09-10 21:49:15 67497 [http-nio-8084-exec-2] DEBUG c.g.l.m.ProductCategoryMapper.list - ==>  Preparing: SELECT t.`category_id` , t.`category_name` , t.`parent_id` FROM `product_category` t  
+2019-09-10 21:49:15 67498 [http-nio-8084-exec-2] DEBUG c.g.l.m.ProductCategoryMapper.list - ==> Parameters:  
+2019-09-10 21:49:15 67522 [http-nio-8084-exec-2] DEBUG c.g.l.m.ProductCategoryMapper.list - <==      Total: 8 
+2019-09-10 21:49:15 68193 [http-nio-8084-exec-3] DEBUG c.g.l.mapper.CommunityMapper.list - ==>  Preparing: SELECT t.`community_id` , t.`community_name` , t.`community_address` FROM `community` t  
+2019-09-10 21:49:15 68193 [http-nio-8084-exec-3] DEBUG c.g.l.mapper.CommunityMapper.list - ==> Parameters:  
+2019-09-10 21:49:15 68216 [http-nio-8084-exec-3] DEBUG c.g.l.mapper.CommunityMapper.list - <==      Total: 2 
+2019-09-10 21:49:16 68829 [http-nio-8084-exec-4] DEBUG c.g.life.mapper.GoodUnitMapper.list - ==>  Preparing: SELECT t.`unit_id` , t.`unit_name` FROM `good_unit` t  
+2019-09-10 21:49:16 68830 [http-nio-8084-exec-4] DEBUG c.g.life.mapper.GoodUnitMapper.list - ==> Parameters:  
