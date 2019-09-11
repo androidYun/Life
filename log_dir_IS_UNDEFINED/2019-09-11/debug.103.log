@@ -1,0 +1,7 @@
+2019-09-11 17:52:48 23353 [http-nio-8084-exec-5] DEBUG c.g.l.m.RoleInformMapper.update - <==    Updates: 1 
+2019-09-11 17:52:48 23470 [http-nio-8084-exec-6] DEBUG c.g.l.m.RoleInformMapper.getById - ==>  Preparing: SELECT t.`merchant_id` , t.`role_type` , t.`name` , t.`password` , t.`phone_number` , t.`create_time` , t.`merchant_no` , t.`parent_id` , t.`token` , t.`open_id` , t.`secret` FROM `role_inform` t WHERE t.`merchant_id` = ? LIMIT 1  
+2019-09-11 17:52:48 23471 [http-nio-8084-exec-6] DEBUG c.g.l.m.RoleInformMapper.getById - ==> Parameters: 1(Integer) 
+2019-09-11 17:52:48 23490 [http-nio-8084-exec-6] DEBUG c.g.l.m.RoleInformMapper.getById - <==      Total: 1 
+2019-09-11 17:52:48 23518 [http-nio-8084-exec-6] DEBUG c.g.l.mapper.RoleInformMapper.list - ==>  Preparing: SELECT t.`merchant_id` , t.`role_type` , t.`name` , t.`password` , t.`phone_number` , t.`create_time` , t.`merchant_no` , t.`parent_id` , t.`token` , t.`open_id` , t.`secret` FROM `role_inform` t  
+2019-09-11 17:52:48 23519 [http-nio-8084-exec-6] DEBUG c.g.l.mapper.RoleInformMapper.list - ==> Parameters:  
+2019-09-11 17:52:48 23537 [http-nio-8084-exec-6] DEBUG c.g.l.mapper.RoleInformMapper.list - <==      Total: 2 

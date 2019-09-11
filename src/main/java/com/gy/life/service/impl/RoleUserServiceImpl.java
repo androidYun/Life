@@ -21,8 +21,8 @@ public class RoleUserServiceImpl implements RoleUserService {
     }
 
     @Override
-    public RoleInform selectById(int roleId) {
-        return roleInformMapper.selectByPrimaryKey(roleId);
+    public RoleInform selectById(int merchantId) {
+        return roleInformMapper.getById(merchantId);
     }
 
     @Override
@@ -52,5 +52,10 @@ public class RoleUserServiceImpl implements RoleUserService {
     @Override
     public RoleInform selectRoleByOpenId(String openId) {
         return roleInformMapper.selectRoleByOpenId(openId);
+    }
+
+    @Override
+    public int updateRole(RoleInform roleInform) {
+        return roleInformMapper.update(roleInform);
     }
 }

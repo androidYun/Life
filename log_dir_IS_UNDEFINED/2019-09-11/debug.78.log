@@ -1,0 +1,6 @@
+2019-09-11 17:14:27 7352353 [http-nio-8084-exec-4] DEBUG c.g.l.m.P.selectAll_COUNT - ==> Parameters: 1(Integer) 
+2019-09-11 17:14:27 7352376 [http-nio-8084-exec-4] DEBUG c.g.l.m.P.selectAll_COUNT - <==      Total: 1 
+2019-09-11 17:14:27 7352377 [http-nio-8084-exec-4] DEBUG c.g.l.m.P.selectAll - ==>  Preparing: select pd.product_id, merchant_id,category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit, product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money, COUNT(opi.buy_count) as sell_out_count, product_price, market_price, publish_phone from product_detail pd left join order_product_item opi on pd.product_id=opi.product_id where pd.merchant_id=? GROUP BY pd.product_id LIMIT ?  
+2019-09-11 17:14:27 7352378 [http-nio-8084-exec-4] DEBUG c.g.l.m.P.selectAll - ==> Parameters: 1(Integer), 20(Integer) 
+2019-09-11 17:14:27 7352403 [http-nio-8084-exec-4] DEBUG c.g.l.m.P.selectAll - <==      Total: 9 
+2019-09-11 17:14:33 7358794 [http-nio-8084-exec-9] DEBUG c.g.l.m.R.selectByPrimaryKey - ==>  Preparing: select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, parent_id, token, open_id, secret from role_inform where merchant_id = ?  

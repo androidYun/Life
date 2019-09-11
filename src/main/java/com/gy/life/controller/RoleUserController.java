@@ -41,7 +41,7 @@ public class RoleUserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ResultEntity loadRole(String phoneNumber, String password, int roleType) throws  GlobalException {
+    public ResultEntity loadRole(String phoneNumber, String password, int roleType) throws GlobalException {
 
         try {
             RoleInform roleInform = roleUserService.selectByPhoneAndPassword(phoneNumber, password);
@@ -93,5 +93,29 @@ public class RoleUserController {
         } else {
             return ResultEntity.getErrorResult("删除失败");
         }
+    }
+
+    @RequestMapping(value = "/{merchantId}", method = RequestMethod.GET)
+    public ResultEntity loadRole(@PathVariable int merchantId) {
+        RoleInform roleInform = roleUserService.selectById(merchantId);
+        if (roleInform == null) {
+            return ResultEntity.getErrorResult("用户不存在");
+        }
+        return ResultEntity.getSuccessResult(roleInform);
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ResultEntity loadRole(@RequestBody  RoleInform roleInform) {
+        RoleInform selectRole = roleUserService.selectById(roleInform.getMerchantId());
+        if (selectRole == null) {
+            return ResultEntity.getErrorResult("此用户不存在");
+        }
+        int updateRole = roleUserService.updateRole(roleInform);
+        if (updateRole > 0) {
+            return ResultEntity.getSuccessResult("更新成功");
+        } else {
+            return ResultEntity.getErrorResult("更新失败");
+        }
+
     }
 }

@@ -1,0 +1,8 @@
+2019-09-11 15:14:46 171531 [http-nio-8084-exec-7] DEBUG c.g.l.m.P.selectAll - <==      Total: 1 
+2019-09-11 15:15:02 187600 [http-nio-8084-exec-5] DEBUG c.g.l.m.ProductCategoryMapper.list - ==>  Preparing: SELECT t.`category_id` , t.`category_name` , t.`parent_id` FROM `product_category` t  
+2019-09-11 15:15:02 187601 [http-nio-8084-exec-5] DEBUG c.g.l.m.ProductCategoryMapper.list - ==> Parameters:  
+2019-09-11 15:15:02 187601 [http-nio-8084-exec-10] DEBUG c.g.life.mapper.GoodUnitMapper.list - ==>  Preparing: SELECT t.`unit_id` , t.`unit_name` FROM `good_unit` t  
+2019-09-11 15:15:02 187601 [http-nio-8084-exec-10] DEBUG c.g.life.mapper.GoodUnitMapper.list - ==> Parameters:  
+2019-09-11 15:15:02 187621 [http-nio-8084-exec-5] DEBUG c.g.l.m.ProductCategoryMapper.list - <==      Total: 8 
+2019-09-11 15:15:02 187624 [http-nio-8084-exec-10] DEBUG c.g.life.mapper.GoodUnitMapper.list - <==      Total: 19 
+2019-09-11 16:14:17 3742428 [http-nio-8084-exec-9] DEBUG c.g.l.m.ProductDetailMapper.save - ==>  Preparing: INSERT INTO `product_detail` ( `merchant_id` , `category_id` , `category_name` , `image_url` , `product_name` , `product_desc` , `create_time` , `max_count` , `unit` , `product_finish_time` , `delivery_time` , `pick_address` , `delivery_type` , `attention` , `delivery_money` , `sell_out_count` , `product_price` , `market_price` , `publish_phone` ) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )  

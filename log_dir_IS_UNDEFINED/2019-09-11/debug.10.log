@@ -1,0 +1,8 @@
+2019-09-11 14:54:36 6046 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 5.786 seconds (JVM running for 7.134) 
+2019-09-11 14:55:41 942  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on guohaijin with PID 15052 (D:\javaWorkSpace\Lift\target\classes started by lang in D:\javaWorkSpace\Lift) 
+2019-09-11 14:55:42 992  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-11 14:55:42 994  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 
+2019-09-11 14:55:47 6128 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 5.934 seconds (JVM running for 6.849) 
+2019-09-11 14:57:31 1172 [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on guohaijin with PID 3152 (D:\javaWorkSpace\Lift\target\classes started by lang in D:\javaWorkSpace\Lift) 
+2019-09-11 14:57:31 1180 [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-11 14:57:31 1181 [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 

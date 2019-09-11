@@ -1,0 +1,9 @@
+2019-09-11 17:48:34 64999 [http-nio-8084-exec-8] DEBUG c.g.l.m.R.selectByPrimaryKey - ==>  Preparing: select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, parent_id, token, open_id, secret from role_inform where merchant_id = ?  
+2019-09-11 17:48:34 65001 [http-nio-8084-exec-8] DEBUG c.g.l.m.R.selectByPrimaryKey - ==> Parameters: 1(Integer) 
+2019-09-11 17:48:34 65019 [http-nio-8084-exec-8] DEBUG c.g.l.m.R.selectByPrimaryKey - <==      Total: 1 
+2019-09-11 17:48:34 65020 [http-nio-8084-exec-8] DEBUG c.g.l.mapper.RoleInformMapper.list - ==>  Preparing: SELECT t.`merchant_id` , t.`role_type` , t.`name` , t.`password` , t.`phone_number` , t.`create_time` , t.`merchant_no` , t.`parent_id` , t.`token` , t.`open_id` , t.`secret` FROM `role_inform` t  
+2019-09-11 17:48:34 65021 [http-nio-8084-exec-8] DEBUG c.g.l.mapper.RoleInformMapper.list - ==> Parameters:  
+2019-09-11 17:48:35 65041 [http-nio-8084-exec-8] DEBUG c.g.l.mapper.RoleInformMapper.list - <==      Total: 2 
+2019-09-11 17:50:21 914  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on guohaijin with PID 7396 (D:\javaWorkSpace\Lift\target\classes started by lang in D:\javaWorkSpace\Lift) 
+2019-09-11 17:50:21 917  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-11 17:50:21 919  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 

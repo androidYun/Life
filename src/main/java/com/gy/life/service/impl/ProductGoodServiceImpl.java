@@ -2,6 +2,9 @@ package com.gy.life.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.gy.life.common.PageEntity;
+import com.gy.life.common.PageRequest;
 import com.gy.life.mapper.ProductDetailMapper;
 import com.gy.life.model.ProductDetail;
 import com.gy.life.service.ProductService;
@@ -21,9 +24,12 @@ public class ProductGoodServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDetail> selectList(int merchantId) {
-        Page<Object> page = PageHelper.startPage(1, 20);
-        return productDetailMapper.selectAll(merchantId);
+    public PageEntity selectList(int merchantId, PageRequest pageRequest) {
+        PageHelper.startPage(pageRequest.getPageNumber(), pageRequest.getPageSize());
+        List<ProductDetail> list = productDetailMapper.selectAll(merchantId);
+        PageInfo<ProductDetail> page = new PageInfo<>(list);
+        PageEntity pageEntity = PageEntity.createPageEntity(page.getPages(), page.getPageSize(), page.getPageNum(), page.getTotal(), list);
+        return pageEntity;
     }
 
     @Override
@@ -38,7 +44,7 @@ public class ProductGoodServiceImpl implements ProductService {
 
     @Override
     public ProductDetail selectByProductId(int productId) {
-        return productDetailMapper.getByColumn("product_id",productId);
+        return productDetailMapper.getByColumn("product_id", productId);
     }
 
     @Override

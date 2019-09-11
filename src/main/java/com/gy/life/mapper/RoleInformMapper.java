@@ -14,7 +14,6 @@ public interface RoleInformMapper extends CrudMapper<RoleInform, Integer> {
 
     int insert(RoleInform record);
 
-    RoleInform selectByPrimaryKey(Integer merchantId);
 
     @Select("select ri.* from role_inform ri where phone_number=#{phoneNumber}")
     RoleInform selectByPhone(@Param("phoneNumber") String phoneNumber);

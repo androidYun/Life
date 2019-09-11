@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
         PageEntity pageEntity = new PageEntity();
         pageEntity.setTotalCount(startPage.getTotal());
         pageEntity.setPageNumber(startPage.getPageNum());
-        pageEntity.setPageIndex(startPage.getPages());
+        pageEntity.setPageSize(startPage.getPages());
         pageEntity.setTotalPageSize(startPage.getPageSize());
         pageEntity.setList(startPage.getResult());
         productOrderMapper.selectDetailList(reserveId);

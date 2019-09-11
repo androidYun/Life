@@ -1,0 +1,6 @@
+2019-09-11 17:31:24 8369600 [http-nio-8084-exec-7] DEBUG c.g.l.m.R.selectByPrimaryKey - ==> Parameters: 1(Integer) 
+2019-09-11 17:31:24 8369708 [http-nio-8084-exec-7] DEBUG c.g.l.m.R.selectByPrimaryKey - <==      Total: 1 
+2019-09-11 17:31:24 8369709 [http-nio-8084-exec-7] DEBUG c.g.l.mapper.RoleInformMapper.list - ==>  Preparing: SELECT t.`merchant_id` , t.`role_type` , t.`name` , t.`password` , t.`phone_number` , t.`create_time` , t.`merchant_no` , t.`parent_id` , t.`token` , t.`open_id` , t.`secret` FROM `role_inform` t  
+2019-09-11 17:31:24 8369709 [http-nio-8084-exec-7] DEBUG c.g.l.mapper.RoleInformMapper.list - ==> Parameters:  
+2019-09-11 17:31:24 8369728 [http-nio-8084-exec-7] DEBUG c.g.l.mapper.RoleInformMapper.list - <==      Total: 2 
+2019-09-11 17:31:27 8372022 [http-nio-8084-exec-1] DEBUG c.g.l.m.R.selectByPrimaryKey - ==>  Preparing: select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, parent_id, token, open_id, secret from role_inform where merchant_id = ?  

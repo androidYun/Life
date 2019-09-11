@@ -1,0 +1,6 @@
+2019-09-11 11:43:10 560414 [http-nio-8084-exec-3] DEBUG c.g.l.m.P.selectAllOrderListDetail - ==>  Preparing: SELECT po.*,pd.* ,address.*,opi.* from product_order po LEFT JOIN order_product_item opi ON po.order_id= opi.order_id LEFT JOIN product_detail pd on opi.product_id and pd.product_id LEFT JOIN address address on po.address_id and address.address_id where po.order_status=? group by po.order_id  
+2019-09-11 11:43:10 560535 [http-nio-8084-exec-3] DEBUG c.g.l.m.P.selectAllOrderListDetail - ==> Parameters: 0(Integer) 
+2019-09-11 11:43:10 560633 [http-nio-8084-exec-3] DEBUG c.g.l.m.P.selectAllOrderListDetail - <==      Total: 13 
+2019-09-11 11:43:11 561243 [http-nio-8084-exec-4] DEBUG c.g.l.mapper.HomeServiceMapper.list - ==>  Preparing: SELECT t.`home_service_id` , t.`service_content` , t.`work_name` , t.`work_address` , t.`work_phone` , t.`service_amount` , t.`publish_time` , t.`service_count` , t.`service_state` , t.`service_company` , t.`unit` FROM `home_service` t  
+2019-09-11 11:43:11 561244 [http-nio-8084-exec-4] DEBUG c.g.l.mapper.HomeServiceMapper.list - ==> Parameters:  
+2019-09-11 11:43:11 561263 [http-nio-8084-exec-4] DEBUG c.g.l.mapper.HomeServiceMapper.list - <==      Total: 1 

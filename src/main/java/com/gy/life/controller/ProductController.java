@@ -1,9 +1,11 @@
 package com.gy.life.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.gy.life.common.PageRequest;
 import com.gy.life.common.ResultEntity;
 import com.gy.life.model.ProductDetail;
 import com.gy.life.model.request.ProductListRequest;
+import com.gy.life.model.request.ProductPageRequest;
 import com.gy.life.service.impl.CategoryServiceImpl;
 import com.gy.life.service.impl.ProductGoodServiceImpl;
 import com.gy.life.utils.DateUtils;
@@ -51,12 +53,12 @@ public class ProductController {
         }
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResultEntity loadProduct(@RequestParam(value = "categoryId", required = false) Integer categoryId, @RequestParam(value = "merchantId") int merchantId) {
-        if (categoryId == null) {
-            return ResultEntity.getSuccessResult(reserveGoodService.selectList(merchantId));
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public ResultEntity loadProduct(@RequestBody ProductPageRequest productPageRequest) {
+        if (productPageRequest.getCategoryId() == null) {
+            return ResultEntity.getSuccessListPage(reserveGoodService.selectList(productPageRequest.getMerchantId(), productPageRequest.getPageRequest()));
         } else {
-            return ResultEntity.getSuccessResult(categoryService.selectProductListByCategoryId(categoryId,merchantId));
+            return ResultEntity.getSuccessResult(categoryService.selectProductListByCategoryId(productPageRequest.getCategoryId(), productPageRequest.getMerchantId()));
         }
     }
 

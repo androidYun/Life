@@ -1,0 +1,8 @@
+2019-09-11 14:54:22 233245 [http-nio-8084-exec-2] DEBUG c.g.l.m.P.selectAll_COUNT - ==> Parameters: 1(Integer) 
+2019-09-11 14:54:22 233282 [http-nio-8084-exec-2] DEBUG c.g.l.m.P.selectAll_COUNT - <==      Total: 1 
+2019-09-11 14:54:22 233284 [http-nio-8084-exec-2] DEBUG c.g.l.m.P.selectAll - ==>  Preparing: select pd.product_id, merchant_id,category_id,category_name,image_url, product_name, product_desc, create_time, max_count, unit, product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money, COUNT(opi.buy_count) as sell_out_count, product_price, market_price, publish_phone from product_detail pd left join order_product_item opi on pd.product_id=opi.product_id where pd.merchant_id=? GROUP BY pd.product_id  
+2019-09-11 14:54:22 233285 [http-nio-8084-exec-2] DEBUG c.g.l.m.P.selectAll - ==> Parameters: 1(Integer) 
+2019-09-11 14:54:22 233305 [http-nio-8084-exec-2] DEBUG c.g.l.m.P.selectAll - <==      Total: 2 
+2019-09-11 14:54:31 1009 [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on guohaijin with PID 13644 (D:\javaWorkSpace\Lift\target\classes started by lang in D:\javaWorkSpace\Lift) 
+2019-09-11 14:54:31 1011 [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-11 14:54:31 1012 [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 

@@ -1,5 +1,7 @@
 package com.gy.life.service;
 
+import com.gy.life.common.PageEntity;
+import com.gy.life.common.PageRequest;
 import com.gy.life.model.ProductDetail;
 
 import java.util.List;
@@ -8,7 +10,7 @@ public interface ProductService {
 
     int insertProductGood(ProductDetail productDetail);
 
-    List<ProductDetail> selectList(int merchantId);
+    PageEntity selectList(int merchantId, PageRequest pageRequest);
 
     List<ProductDetail> selectListByProductId(List<Integer> productIdList);
 

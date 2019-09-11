@@ -1,0 +1,6 @@
+2019-09-11 17:52:30 5495 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 5.314 seconds (JVM running for 6.221) 
+2019-09-11 17:52:39 14559 [http-nio-8084-exec-1] DEBUG c.g.l.m.RoleInformMapper.getById - ==>  Preparing: SELECT t.`merchant_id` , t.`role_type` , t.`name` , t.`password` , t.`phone_number` , t.`create_time` , t.`merchant_no` , t.`parent_id` , t.`token` , t.`open_id` , t.`secret` FROM `role_inform` t WHERE t.`merchant_id` = ? LIMIT 1  
+2019-09-11 17:52:39 14573 [http-nio-8084-exec-1] DEBUG c.g.l.m.RoleInformMapper.getById - ==> Parameters: 5(Integer) 
+2019-09-11 17:52:39 14601 [http-nio-8084-exec-1] DEBUG c.g.l.m.RoleInformMapper.getById - <==      Total: 1 
+2019-09-11 17:52:43 17904 [http-nio-8084-exec-2] DEBUG c.g.l.m.RoleInformMapper.getById - ==>  Preparing: SELECT t.`merchant_id` , t.`role_type` , t.`name` , t.`password` , t.`phone_number` , t.`create_time` , t.`merchant_no` , t.`parent_id` , t.`token` , t.`open_id` , t.`secret` FROM `role_inform` t WHERE t.`merchant_id` = ? LIMIT 1  
+2019-09-11 17:52:43 17904 [http-nio-8084-exec-2] DEBUG c.g.l.m.RoleInformMapper.getById - ==> Parameters: 5(Integer) 

@@ -1,0 +1,8 @@
+2019-09-11 17:47:36 6956 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 6.728 seconds (JVM running for 7.72) 
+2019-09-11 17:47:37 7232 [http-nio-8084-exec-1] DEBUG c.g.l.m.R.selectByPrimaryKey - ==>  Preparing: select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, parent_id, token, open_id, secret from role_inform where merchant_id = ?  
+2019-09-11 17:47:37 7245 [http-nio-8084-exec-1] DEBUG c.g.l.m.R.selectByPrimaryKey - ==> Parameters: 5(Integer) 
+2019-09-11 17:47:37 7272 [http-nio-8084-exec-1] DEBUG c.g.l.m.R.selectByPrimaryKey - <==      Total: 1 
+2019-09-11 17:47:37 7275 [http-nio-8084-exec-1] DEBUG c.g.l.m.RoleInformMapper.update - ==>  Preparing: UPDATE `role_inform` SET `role_type`=?, `name`=?, `password`=?, `phone_number`=?, `create_time`=?, `merchant_no`=?, `parent_id`=?, `token`=?, `open_id`=?, `secret`=? WHERE `merchant_id` = ?  
+2019-09-11 17:47:37 7276 [http-nio-8084-exec-1] DEBUG c.g.l.m.RoleInformMapper.update - ==> Parameters: 1(Integer), 嘎啦汤(String), 123456(String), 15737139761(String), null, null, null, null, (String), (String), 5(Integer) 
+2019-09-11 17:47:37 7295 [http-nio-8084-exec-1] DEBUG c.g.l.m.RoleInformMapper.update - <==    Updates: 1 
+2019-09-11 17:47:37 7539 [http-nio-8084-exec-2] DEBUG c.g.l.m.R.selectByPrimaryKey - ==>  Preparing: select merchant_id, role_type, name, password, phone_number, create_time, merchant_no, parent_id, token, open_id, secret from role_inform where merchant_id = ?  

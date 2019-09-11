@@ -1,0 +1,7 @@
+2019-09-11 11:33:52 2628 [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on guohaijin with PID 14296 (D:\javaWorkSpace\Lift\target\classes started by lang in D:\javaWorkSpace\Lift) 
+2019-09-11 11:33:52 2631 [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-11 11:33:52 2632 [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 
+2019-09-11 11:34:15 25337 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 24.505 seconds (JVM running for 27.963) 
+2019-09-11 11:43:07 557230 [http-nio-8084-exec-1] DEBUG c.g.l.m.ProductCategoryMapper.list - ==>  Preparing: SELECT t.`category_id` , t.`category_name` , t.`parent_id` FROM `product_category` t  
+2019-09-11 11:43:08 558199 [http-nio-8084-exec-1] DEBUG c.g.l.m.ProductCategoryMapper.list - ==> Parameters:  
+2019-09-11 11:43:08 558385 [http-nio-8084-exec-1] DEBUG c.g.l.m.ProductCategoryMapper.list - <==      Total: 8 

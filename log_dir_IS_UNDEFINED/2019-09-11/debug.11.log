@@ -1,0 +1,6 @@
+2019-09-11 14:57:36 6118 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 5.867 seconds (JVM running for 6.97) 
+2019-09-11 14:58:15 939  [main] INFO  com.gy.life.LiftApplication - Starting LiftApplication on guohaijin with PID 4684 (D:\javaWorkSpace\Lift\target\classes started by lang in D:\javaWorkSpace\Lift) 
+2019-09-11 14:58:15 942  [main] DEBUG com.gy.life.LiftApplication - Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE 
+2019-09-11 14:58:15 943  [main] INFO  com.gy.life.LiftApplication - No active profile set, falling back to default profiles: default 
+2019-09-11 14:58:21 7122 [main] INFO  com.gy.life.LiftApplication - Started LiftApplication in 6.94 seconds (JVM running for 7.851) 
+2019-09-11 14:58:23 8283 [http-nio-8084-exec-2] DEBUG c.g.l.m.P.selectAll_COUNT - ==>  Preparing: SELECT count(0) FROM (SELECT pd.product_id, merchant_id, category_id, category_name, image_url, product_name, product_desc, create_time, max_count, unit, product_finish_time, delivery_time, pick_address, delivery_type, attention, delivery_money, COUNT(opi.buy_count) AS sell_out_count, product_price, market_price, publish_phone FROM product_detail pd LEFT JOIN order_product_item opi ON pd.product_id = opi.product_id WHERE pd.merchant_id = ? GROUP BY pd.product_id) table_count  

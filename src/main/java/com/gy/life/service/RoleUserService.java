@@ -19,6 +19,8 @@ public interface RoleUserService {
 
     int deleteRole(int merchantId);
 
+    int updateRole(RoleInform roleInform);
+
 
     RoleInform selectRoleByOpenId(String openId);
 }
