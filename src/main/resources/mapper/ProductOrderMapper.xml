@@ -52,6 +52,7 @@
         <association property="productOrder" javaType="com.gy.life.model.ProductOrder">
             <id column="order_id" jdbcType="INTEGER" property="orderId"/>
             <id column="address_id" jdbcType="INTEGER" property="addressId"/>
+            <id column="merchant_id" jdbcType="INTEGER" property="merchantId"/>
             <id column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
             <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
             <result column="user_id" jdbcType="INTEGER" property="userId"/>
@@ -59,6 +60,10 @@
             <result column="total_count" jdbcType="INTEGER" property="totalCount"/>
             <result column="order_status" jdbcType="INTEGER" property="orderStatus"/>
             <result column="leave_message" jdbcType="VARCHAR" property="leaveMessage"/>
+            <result column="pay_status" jdbcType="INTEGER" property="parStatus"/>
+            <result column="express_delivery_company" jdbcType="VARCHAR" property="expressDeliveryCompany"/>
+            <result column="order_delivery_status" jdbcType="INTEGER" property="orderDeliveryStatus"/>
+            <result column="delivery_number" jdbcType="VARCHAR" property="deliveryNumber"/>
         </association>
         <association property="productDetail" javaType="com.gy.life.model.ProductDetail">
             <id column="product_id" jdbcType="INTEGER" property="productId"/>

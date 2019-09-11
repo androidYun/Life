@@ -51,6 +51,18 @@ public class ProductOrder {
     /**  数据库字段：address_id */
     private Integer addressId;
 
+    /** 支付状态 10 未支付 20已支付 30 申请退款 40 退款成功  50 拒绝退款 60 完成交易, 数据库字段：pay_status */
+    private String payStatus;
+
+    /** 快递公司, 数据库字段：express_delivery_company */
+    private String expressDeliveryCompany;
+
+    /** 发货状态 100 待发货 200 已发货 300 已签收, 数据库字段：order_delivery_status */
+    private Integer orderDeliveryStatus;
+
+    /** 快递编号, 数据库字段：delivery_number */
+    private Integer deliveryNumber;
+
     /** 设置预定订单Id, 数据库字段：product_order.order_id */
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
@@ -151,6 +163,46 @@ public class ProductOrder {
         return this.addressId;
     }
 
+    /** 设置支付状态 10 未支付 20已支付 30 申请退款 40 退款成功  50 拒绝退款 60 完成交易, 数据库字段：product_order.pay_status */
+    public void setPayStatus(String payStatus) {
+        this.payStatus = payStatus;
+    }
+
+    /** 获取支付状态 10 未支付 20已支付 30 申请退款 40 退款成功  50 拒绝退款 60 完成交易, 数据库字段：product_order.pay_status */
+    public String getPayStatus() {
+        return this.payStatus;
+    }
+
+    /** 设置快递公司, 数据库字段：product_order.express_delivery_company */
+    public void setExpressDeliveryCompany(String expressDeliveryCompany) {
+        this.expressDeliveryCompany = expressDeliveryCompany;
+    }
+
+    /** 获取快递公司, 数据库字段：product_order.express_delivery_company */
+    public String getExpressDeliveryCompany() {
+        return this.expressDeliveryCompany;
+    }
+
+    /** 设置发货状态 100 待发货 200 已发货 300 已签收, 数据库字段：product_order.order_delivery_status */
+    public void setOrderDeliveryStatus(Integer orderDeliveryStatus) {
+        this.orderDeliveryStatus = orderDeliveryStatus;
+    }
+
+    /** 获取发货状态 100 待发货 200 已发货 300 已签收, 数据库字段：product_order.order_delivery_status */
+    public Integer getOrderDeliveryStatus() {
+        return this.orderDeliveryStatus;
+    }
+
+    /** 设置快递编号, 数据库字段：product_order.delivery_number */
+    public void setDeliveryNumber(Integer deliveryNumber) {
+        this.deliveryNumber = deliveryNumber;
+    }
+
+    /** 获取快递编号, 数据库字段：product_order.delivery_number */
+    public Integer getDeliveryNumber() {
+        return this.deliveryNumber;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -211,6 +263,14 @@ public class ProductOrder {
         sb.append("leaveMessage=").append(leaveMessage);
         sb.append(", ");
         sb.append("addressId=").append(addressId);
+        sb.append(", ");
+        sb.append("payStatus=").append(payStatus);
+        sb.append(", ");
+        sb.append("expressDeliveryCompany=").append(expressDeliveryCompany);
+        sb.append(", ");
+        sb.append("orderDeliveryStatus=").append(orderDeliveryStatus);
+        sb.append(", ");
+        sb.append("deliveryNumber=").append(deliveryNumber);
         sb.append("]");
 
         return sb.toString();
